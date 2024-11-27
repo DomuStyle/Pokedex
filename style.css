@@ -1,0 +1,33 @@
+html {
+    scroll-behavior: smooth;
+    margin: 0;
+}
+
+body {
+    background-color: darkgrey;
+}
+
+
+header {
+    height: 128px;
+    display: flex;
+    align-items: center;
+    border-bottom: 2px solid black;
+}
+
+header img {
+    height: 64px;
+    width: 64px;
+    margin-left: 32px;
+}
+
+footer {
+    height: 128px;
+    display: flex;
+    align-items: center;
+    border-top: 2px solid black;
+}
+
+h1 {
+
+}
