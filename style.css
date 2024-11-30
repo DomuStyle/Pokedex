@@ -4,15 +4,18 @@ html {
 }
 
 body {
-    background-color: darkgrey;
+    background: radial-gradient(rgb(172, 172, 172),rgb(77, 77, 77));
+    margin: 0;
 }
-
 
 header {
     height: 128px;
     display: flex;
     align-items: center;
+    justify-content: space-between;
     border-bottom: 2px solid black;
+    background-color: rgb(131, 131, 131);
+
 }
 
 header img {
@@ -21,13 +24,27 @@ header img {
     margin-left: 32px;
 }
 
+main {
+    height: 100%;
+    object-fit: contain;
+}
+
 footer {
     height: 128px;
     display: flex;
     align-items: center;
+    justify-content: center;
     border-top: 2px solid black;
 }
 
-h1 {
+footer img {
+    height: 64px;
+}
 
+h1 {
+    font-size: 32px;
+}
+
+h2 {
+    font-size: 16px;
 }

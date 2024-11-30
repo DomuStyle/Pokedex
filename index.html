@@ -6,17 +6,25 @@
     <title>Dom´s Pokedex</title>
     <link rel="icon" type="pokeball_icon" href="./assets/icons/pokeball-5069774_640_small.png">
     <link rel="stylesheet" href="./style.css">
+    <link rel="stylesheet" href="./styles/content.css">
 </head>
-<body onload="fetchDataJson()">
+<body onload="init()">
     <header>
-        <img src="./assets/icons/pokemon-1536847_640.png" alt="">
-        <h1>Pokedex</h1>
+        <div class="header_title">
+            <img src="./assets/icons/pokemon-1536847_640.png" alt="">
+            <h1>Pokedex</h1>
+        </div>
+        <nav>
+            <input type="text" alt="enter pokemon name" id="search_pokemon">
+            <button onclick="fetchData()">fetch pokemon sprite</button>
+        </nav>
     </header>
     <main>
         <div id="content"></div>
+        <img src="" alt="" id="test_img">
     </main>
     <footer>
-
+        <img src="./assets/icons/pokemon-1536847_640.png" alt="">
     </footer>
 </body>
 <script src="./scripts/fetch.js"></script>

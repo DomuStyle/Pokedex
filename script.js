@@ -1,25 +1,33 @@
-async function fetchDataJson() {
-    let response = await fetch('https://pokeapi.co/api/v2/pokemon?limit=15&offset=0');
-    let responseAsJson = await response.json();
-    console.log(responseAsJson);
 
-    let htmlcontent = "";
-    for (let index = 0; index < responseAsJson.results.length; index++) {
-        htmlcontent += getContentTemplate(responseAsJson, index);
-    }
-
-    document.getElementById('content').innerHTML = htmlcontent;
+async function init() {
+    await fetchAllPokemon();
 }
 
-function getContentTemplate(responseAsJson, index) {
-    const char = responseAsJson[index];
-    console.log(responseAsJson[index]);
-    
-    return `<div class="pokedex-card">
-                <h2>Name: ${responseAsJson.results[index].name}</h2>
-            </div>
-            `;
-}
+let pokemonData = []; // Array to store Pokémon data
 
+
+
+
+
+
+
+function fetchData() {
+    const pokemonName = document.getElementById('search_pokemon').value.toLowerCase();
+    fetch(`https://pokeapi.co/api/v2/pokemon/${pokemonName}`)
+        .then(response => {
+            if (!response.ok) {
+                throw new Error("Could not fetch resource");
+            }
+            return response.json();
+        })
+        .then(data => {
+            const imgElement = document.getElementById('test_img');
+            imgElement.src = data.sprites.other.home.front_default || data.sprites.front_default || '';
+        })
+        .catch(error => {
+            console.error("Error fetching Pokémon data:", error);
+        });
+}
+console.log(pokemonData);
 
 
