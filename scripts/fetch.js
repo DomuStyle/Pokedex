@@ -11,7 +11,7 @@
 async function fetchAllPokemon() {
 
     try {
-        const response = await fetch('https://pokeapi.co/api/v2/pokemon/');
+        const response = await fetch('https://pokeapi.co/api/v2/pokemon?limit=100&offset=0');
         const data = await response.json();
 
         // Fetch details for each Pokémon and store in array

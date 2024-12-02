@@ -1,9 +1,9 @@
-
+// initialize the application by fecthing all Pokeon on page load
 async function init() {
     await fetchAllPokemon();
 }
 
-let pokemonData = []; // Array to store Pokémon data
+let pokemonData = []; // Array to store Pokémon data fetched from the api
 
 function fetchData() {
     const pokemonName = document.getElementById('search_pokemon').value.toLowerCase(); // toLowerCase turns the input into small cases

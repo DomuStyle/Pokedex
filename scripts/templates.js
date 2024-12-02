@@ -1,11 +1,14 @@
 function renderPokemonCards(pokemonArray) {
     const contentDiv = document.getElementById('content');
     let html = '';
+    let counter = 0;
 
     for (let i = 0; i < pokemonArray.length; i++) {
         const pokemon = pokemonArray[i];
         if (pokemon) { // Check if data was successfully fetched
-            html += `<div class="pokemon_card">
+
+            if (counter < 25) {
+                html += `<div class="pokemon_card">
                         <div class="card_header">
                             <p class="card_id"># ${pokemon.id}</p><h2 class="card_name">${pokemon.name}</h2>
                         </div>
@@ -19,6 +22,11 @@ function renderPokemonCards(pokemonArray) {
                             <p><b>height:</b> ${pokemon.height}m</p>
                         </div>        
                     </div>`;
+                counter++;
+            } else {
+                break;
+            }
+            
         }
     }
     contentDiv.innerHTML = html;

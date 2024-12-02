@@ -8,7 +8,7 @@
 }
 
 .pokemon_card {
-    height: 256px;
+    /* height: 256px; */
     width: 196px;
     background-color: rgb(163, 163, 163);
     margin: 8px 16px;
@@ -43,5 +43,5 @@
 }
 
 .card_body p {
-    margin: 0;
+    margin: 8px 16px;
 }
