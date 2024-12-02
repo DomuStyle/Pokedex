@@ -41,3 +41,7 @@
     filter: drop-shadow(2px 4px 6px black);
     padding-bottom: 8px;
 }
+
+.card_body p {
+    margin: 0;
+}

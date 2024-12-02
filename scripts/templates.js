@@ -11,6 +11,12 @@ function renderPokemonCards(pokemonArray) {
                         </div>
                         <div class="card_display">
                             <img src="${pokemon.sprites.other.home.front_default}" alt="${pokemon.name}">
+                        </div>
+                        <div class="card_body">
+                            <p><b>height:</b> ${pokemon.height}m</p>
+                            <p><b>weight:</b> ${pokemon.weight}m</p>
+                            <p><b>height:</b> ${pokemon.height}m</p>
+                            <p><b>height:</b> ${pokemon.height}m</p>
                         </div>        
                     </div>`;
         }

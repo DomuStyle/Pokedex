@@ -1,17 +1,17 @@
-async function fetchNameJson() {
-    let response = await fetch('https://pokeapi.co/api/v2/pokemon?limit=15&offset=0');
-    let responseNameJson = await response.json();
-    console.log(responseNameJson);
+// async function fetchNameJson() {
+//     let response = await fetch('https://pokeapi.co/api/v2/pokemon?limit=15&offset=0');
+//     let responseNameJson = await response.json();
+//     console.log(responseNameJson);
 
-    for (let index = 0; index < responseNameJson.results.length; index++) {
-        getNameTemplate(responseNameJson, index);
-    } 
-}
+//     for (let index = 0; index < responseNameJson.results.length; index++) {
+//         getNameTemplate(responseNameJson, index);
+//     } 
+// }
 
 async function fetchAllPokemon() {
 
     try {
-        const response = await fetch('https://pokeapi.co/api/v2/pokemon?limit=15&offset=0');
+        const response = await fetch('https://pokeapi.co/api/v2/pokemon/');
         const data = await response.json();
 
         // Fetch details for each Pokémon and store in array
