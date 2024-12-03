@@ -16,8 +16,9 @@
             <h1>Pokedex</h1>
         </div>
         <nav>
-            <input type="text" alt="enter pokemon name" id="search_pokemon">
-            <button onclick="fetchData()">fetch pokemon sprite</button>
+            <input type="text" placeholder="enter pokemon name" id="search_pokemon" onkeyup="searchPokemon()">
+            <button onclick="searchPokemon()">search Pokemon</button>
+            <div id="suggestions"></div>
         </nav>
     </header>
     <main>

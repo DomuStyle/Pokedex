@@ -11,7 +11,7 @@
 async function fetchAllPokemon() {
 
     try {
-        const response = await fetch('https://pokeapi.co/api/v2/pokemon?limit=100&offset=0');
+        const response = await fetch('https://pokeapi.co/api/v2/pokemon?limit=100000&offset=0'); // ?limit50(amount to show) &offset=49(start position) use 49 if u want to start at pos 50
         const data = await response.json();
 
         // Fetch details for each Pokémon and store in array
@@ -33,7 +33,6 @@ async function fetchPokemonDetails(url) {
         return await response.json();
     } catch (error) {
         console.error("Error fetching Pokémon details:", error);
-        return null;
     }
 }
 
