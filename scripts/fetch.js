@@ -4,14 +4,14 @@
 //     console.log(responseNameJson);
 
 //     for (let index = 0; index < responseNameJson.results.length; index++) {
-//         getNameTemplate(responseNameJson, index);
+//         getNameTemplate(responseNameJson, index);w
 //     } 
 // }
 
 async function fetchAllPokemon() {
 
     try {
-        const response = await fetch('https://pokeapi.co/api/v2/pokemon?limit=100000&offset=0'); // ?limit50(amount to show) &offset=49(start position) use 49 if u want to start at pos 50
+        const response = await fetch('https://pokeapi.co/api/v2/pokemon?limit=1350&offset=0'); // ?limit50(amount to show) &offset=49(start position) use 49 if u want to start at pos 50
         const data = await response.json();
 
         // Fetch details for each Pokémon and store in array

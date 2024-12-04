@@ -1,0 +1,11 @@
+#show_more_btn {
+    display: flex;
+    justify-content: center;
+}
+
+#show_more_btn button {
+    height: 64px;
+    width: 128px;
+    border-radius: 16px;
+    filter: drop-shadow(2px 4px 6px black);
+}

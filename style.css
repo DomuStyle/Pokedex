@@ -15,7 +15,7 @@ header {
     justify-content: space-between;
     border-bottom: 2px solid black;
     background-color: rgb(131, 131, 131);
-
+    position: relative;
 }
 
 header img {
