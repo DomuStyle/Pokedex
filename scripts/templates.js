@@ -7,9 +7,10 @@ function getLoadingSpinnertemplate() {
 }
 
 function getPokemonCardsTemplate(pokemon) {
+    let abilityItem = pokemon.abilities.map(ability => ability.ability.name).join(", ");
     return `
             <div class="pokemon_card">
-                <div class="card_header">
+                <div class="card_header ${pokemon.type}">
                     <p class="card_id"># ${pokemon.id}</p><h2 class="card_name">${pokemon.name}</h2>
                 </div>
                 <div class="card_display">
@@ -19,7 +20,7 @@ function getPokemonCardsTemplate(pokemon) {
                     <p><b>height:</b> ${pokemon.height}m</p>
                     <p><b>weight:</b> ${pokemon.weight} kg</p>
                     <p><b>Base-xp:</b> ${pokemon.base_experience}</p>
-                    <p><b>Abilities:</b> ${pokemon.abilities}</p>
+                    <p><b>Abilities:</b> ${abilityItem}</p>
                 </div>        
             </div>`;
 }

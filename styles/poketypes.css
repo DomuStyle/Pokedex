@@ -1,47 +1,54 @@
+.normal {
+    background-color: rgb(168, 168, 120);
+}
+.fire {
+    background-color: rgb(240, 128, 48);
+}
+.water {
+    background-color: rgb(104, 144, 240);
+}
+.grass {
+    background-color: rgb(120, 200, 80);
+}
+.electric {
+    background-color: rgb(248, 208, 48);
+}
+.ice {
+    background-color: rgb(152, 216, 216);
+}
 .fighting {
-    background-color: #C22E28;
+    background-color: rgb(192, 48, 40);
 }
-
 .poison {
-    background-color: #A33EA1;
+    background-color: rgb(160, 64, 160);
 }
-
 .ground {
-    background-color: #E2BF65;
+    background-color: rgb(224, 192, 104);
 }
-
 .flying {
-    background-color: #A98FF3;
+    background-color: rgb(168, 144, 240);
 }
-
 .psychic {
-    background-color: #F95587;
+    background-color: rgb(248, 88, 136);
 }
-
 .bug {
-    background-color: #A6B91A;
+    background-color: rgb(168, 184, 32);
 }
-
 .rock {
-    background-color: #B6A136;
+    background-color: rgb(184, 160, 56);
 }
-
 .ghost {
-    background-color: #735797;
+    background-color: rgb(112, 88, 152);
 }
-
 .dragon {
-    background-color: #6F35FC;
+    background-color: rgb(112, 56, 248);
 }
-
 .dark {
-    background-color: #705746;
+    background-color: rgb(112, 88, 72);
 }
-
 .steel {
-    background-color: #B7B7CE;
+    background-color: rgb(184, 184, 208);
 }
-
 .fairy {
-    background-color: #D685AD;
+    background-color: rgb(238, 153, 172);
 }
