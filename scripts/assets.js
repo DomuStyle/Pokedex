@@ -1,3 +1,7 @@
+function showLoadingSpinner() {
+    document.getElementById('content').innerHTML = getLoadingSpinnertemplate();
+}
+
 async function loadMorePokemon() {
     try {
         if (counter >= pokemonData.length) {
@@ -13,7 +17,7 @@ async function loadMorePokemon() {
             let pokemon = pokemonData[index];
 
             if (pokemon) {
-                additionalHtml += getPokemonCardtemplate(pokemon);
+                additionalHtml += getPokemonCardsTemplate(pokemon);
                 loadCount++;
                 counter++;
             }
@@ -25,6 +29,6 @@ async function loadMorePokemon() {
     }
 }
 
-function showLoadingSpinner() {
-    document.getElementById('content').innerHTML = getLoadingSpinnertemplate();
-}
+// function showDetailCard() {
+
+// }

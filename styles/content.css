@@ -48,7 +48,7 @@
     margin: 8px 16px;
     border-radius: 8px;
     border: 2px solid black;
-    background-image: radial-gradient(rgba(93, 255, 60, 0.9), rgba(85, 148, 34, 0.9));
+    /* background-image: radial-gradient(rgba(93, 255, 60, 0.9), rgba(85, 148, 34, 0.9)); */
 }
 
 .card_display img {
