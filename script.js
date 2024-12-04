@@ -1,11 +1,37 @@
 // initialize the application by fecthing all Pokeon on page load
 async function init() {
+    // showLoadingSpinner();
     await fetchAllPokemon();
     getShowMoreBtnTemplate();
 }
 
+// global variables and array's
+let counter = 0;
+
 let pokemonData = []; // Array to store Pokémon data fetched from the api
 
+// render functions
+function renderPokemonCards(pokemonArray) {
+    const contentDiv = document.getElementById('content');
+    let html = '';
+    
+    for (let index = 0; index < pokemonArray.length; index++) {
+        const pokemon = pokemonArray[index];
+        if (pokemon) { // Check if data was successfully fetched
+            
+            if (counter < 24) {
+                html += getPokemonCardsTemplate(pokemon);
+                counter++;
+            } else {
+                break;
+            }
+            
+        }
+    }
+    contentDiv.innerHTML = html;
+}
+
+// search pokemon function
 function searchPokemon() {
     let input = document.getElementById('search_pokemon').value.toLowerCase();
 
@@ -37,36 +63,6 @@ function selectPokemon(name) {
     document.getElementById('search_pokemon').value = name;
     document.getElementById('suggestions').innerHTML = ''; // Clear suggestions when one is selected
 }
+
+// log stored array for development | delete if app finished!
 console.log(pokemonData);
-
-function showPokemonDetails() {
-    let detailContent = document.getElementById('detail_content');
-    detailContent.innerHTML = renderDetailsCard();
-}
-
-async function loadMorePokemon() {
-    try {
-        if (counter >= pokemonData.length) {
-            console.log("no more pokemon to load");
-            return; 
-        }
-
-        let contentDiv = document.getElementById('content');
-        let additionalHtml = '';
-        let loadCount = 0;
-
-        for (let index = counter; index < pokemonData.length && loadCount < 24; index++) {
-            let pokemon = pokemonData[index];
-
-            if (pokemon) {
-                additionalHtml += getPokemonCardtemplate(pokemon);
-                loadCount++;
-                counter++;
-            }
-        }
-
-        contentDiv.innerHTML += additionalHtml;
-    } catch (error) {
-        console.error("could not load more pokemon", error);
-    }
-}
