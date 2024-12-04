@@ -1,6 +1,6 @@
 // initialize the application by fecthing all Pokeon on page load
 async function init() {
-    // showLoadingSpinner();
+    showLoadingSpinner();
     await fetchAllPokemon();
     getShowMoreBtnTemplate();
 }

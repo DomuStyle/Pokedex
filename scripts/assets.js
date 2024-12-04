@@ -24,3 +24,7 @@ async function loadMorePokemon() {
         console.error("could not load more pokemon", error);
     }
 }
+
+function showLoadingSpinner() {
+    document.getElementById('content').innerHTML = getLoadingSpinnertemplate();
+}
