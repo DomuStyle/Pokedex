@@ -1,13 +1,19 @@
 // initialize the application by fecthing all Pokeon on page load
 async function init() {
     await fetchAllPokemon();
-    showMore();
+    getShowMoreBtnTemplate();
 }
 
 let pokemonData = []; // Array to store Pokémon data fetched from the api
 
 function searchPokemon() {
     let input = document.getElementById('search_pokemon').value.toLowerCase();
+
+    if (input.length < 3) {
+        document.getElementById('suggestions').innerHTML = '';
+        return;
+    }
+
     let results = [];
 
     results = pokemonData.filter(pokemon => pokemon.name.toLowerCase().startsWith(input));
@@ -36,9 +42,4 @@ console.log(pokemonData);
 function showPokemonDetails() {
     let detailContent = document.getElementById('detail_content');
     detailContent.innerHTML = renderDetailsCard();
-}
-
-function showMore() {
-    let showMoreContainer = document.getElementById('show_more_btn');
-    showMoreContainer.innerHTML = getShowMoreBtnTemplate();
 }

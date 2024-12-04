@@ -1,3 +1,12 @@
+#search_pokemon {
+    position: relative;
+}
+
+#suggestions {
+    position: absolute;
+    z-index: 1;
+}
+
 #show_more_btn {
     display: flex;
     justify-content: center;
@@ -8,4 +17,9 @@
     width: 128px;
     border-radius: 16px;
     filter: drop-shadow(2px 4px 6px black);
+}
+
+#show_more_btn button:hover {
+    cursor: pointer;
+    transform: scale(0.95);
 }

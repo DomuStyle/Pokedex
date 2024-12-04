@@ -5,8 +5,8 @@ function renderPokemonCards(pokemonArray) {
     let html = '';
     
 
-    for (let i = 0; i < pokemonArray.length; i++) {
-        const pokemon = pokemonArray[i];
+    for (let index = 0; index < pokemonArray.length; index++) {
+        const pokemon = pokemonArray[index];
         if (pokemon) { // Check if data was successfully fetched
             
             if (counter < 24) {
@@ -20,8 +20,8 @@ function renderPokemonCards(pokemonArray) {
                             <div class="card_body">
                                 <p><b>height:</b> ${pokemon.height}m</p>
                                 <p><b>weight:</b> ${pokemon.weight} kg</p>
-                                <p><b>height:</b> ${pokemon.height}m</p>
-                                <p><b>height:</b> ${pokemon.height}m</p>
+                                <p><b>Base-xp:</b> ${pokemon.base_experience}</p>
+                                <p><b>Abilities:</b> ${pokemon.abilities}</p>
                             </div>        
                         </div>`;
                 counter++;
@@ -35,9 +35,10 @@ function renderPokemonCards(pokemonArray) {
 }
 
 function getShowMoreBtnTemplate() {
-    return `
-            <button onClick="">show more</button>
-            `;
+    let showMoreBtn = document.getElementById('show_more_btn');
+    showMoreBtn.innerHTML = `
+                            <button onClick="">show more</button>
+                            `;
 }
 
 // function renderDetailsCard(){
