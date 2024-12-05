@@ -29,6 +29,6 @@ async function loadMorePokemon() {
     }
 }
 
-// function showDetailCard() {
-
+// function toggleOverlay() {
+//     if  (!document.getElementById(''))
 // }

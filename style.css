@@ -6,6 +6,7 @@ html {
 body {
     background: radial-gradient(rgb(172, 172, 172),rgb(77, 77, 77));
     margin: 0;
+    height: 100%;
 }
 
 header {

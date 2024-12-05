@@ -31,6 +31,13 @@ function renderPokemonCards(pokemonArray) {
     contentDiv.innerHTML = html;
 }
 
+function renderDynamicBackground(typeColors) {
+    if (typeColors.length === 1) {
+        return `background-color: ${typeColors[0]};`;
+    } else if (typeColors.length === 2) {
+        return `background: radial_gradient(${typeColors[0]} 50%, ${typeColors[1]} 50%);`;
+    };
+}
 // search pokemon function
 function searchPokemon() {
     let input = document.getElementById('search_pokemon').value.toLowerCase();
@@ -61,7 +68,7 @@ function searchPokemon() {
 
 function selectPokemon(name) {
     document.getElementById('search_pokemon').value = name;
-    document.getElementById('suggestions').innerHTML = ''; // Clear suggestions when one is selected
+    document.getElementById('suggestions').innerHTML = ''; // Clear suggestions if one is selected
 }
 
 // log stored array for development | delete if app finished!
