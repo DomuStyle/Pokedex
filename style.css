@@ -20,9 +20,16 @@ header {
 }
 
 header img {
-    height: 64px;
-    width: 64px;
+    height: 80px;
+    width: 90px;
     margin-left: 32px;
+    filter: drop-shadow(2px 4px 6px black);
+}
+
+.header_text_img {
+    width: 180px;
+    margin: 0;
+    filter: none;
 }
 
 main {

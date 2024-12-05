@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dom´s Pokedex</title>
-    <link rel="icon" type="pokeball_icon" href="./assets/icons/pokeball-5069774_640_small.png">
+    <link rel="icon" type="pokeball_icon" href="./assets/icons/pokedex-favicon_no-bg_500x500.png">
     <link rel="stylesheet" href="./style.css">
     <link rel="stylesheet" href="./styles/content.css">
     <link rel="stylesheet" href="./styles/poketypes.css">
@@ -14,11 +14,11 @@
     <div id="overlay" class="d_none"></div>
         <header>
             <div class="header_title">
-                <img src="./assets/icons/pokemon-1536847_640.png" alt="">
-                <h1>Pokedex</h1>
+                <img src="./assets/icons/pokeball-no-bg_427x364.png" alt="">
+                <img class="header_text_img" src="./assets/icons/Pokedex_text.png" alt="">
             </div>
             <nav>
-                <input type="text" placeholder="enter pokemon name" id="search_pokemon" onkeyup="searchPokemon()">
+                <input type="text" placeholder=" enter pokemon name" id="search_pokemon" onkeyup="searchPokemon()">
                 <button onclick="searchPokemon()">search Pokemon</button>
                 <div id="suggestions"></div>
             </nav>
@@ -31,6 +31,7 @@
         </main>
         <footer>
             <img src="./assets/icons/pokemon-1536847_640.png" alt="">
+            <a href="https://www.textstudio.com/">Text generated with textstudio.com</a>
         </footer>
     </div>
 </body>
