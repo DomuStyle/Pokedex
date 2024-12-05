@@ -1,54 +1,20 @@
-.normal {
-    background-color: rgb(168, 168, 120);
-}
-.fire {
-    background-color: rgb(240, 128, 48);
-}
-.water {
-    background-color: rgb(104, 144, 240);
-}
-.grass {
-    background-color: rgb(120, 200, 80);
-}
-.electric {
-    background-color: rgb(248, 208, 48);
-}
-.ice {
-    background-color: rgb(152, 216, 216);
-}
-.fighting {
-    background-color: rgb(192, 48, 40);
-}
-.poison {
-    background-color: rgb(160, 64, 160);
-}
-.ground {
-    background-color: rgb(224, 192, 104);
-}
-.flying {
-    background-color: rgb(168, 144, 240);
-}
-.psychic {
-    background-color: rgb(248, 88, 136);
-}
-.bug {
-    background-color: rgb(168, 184, 32);
-}
-.rock {
-    background-color: rgb(184, 160, 56);
-}
-.ghost {
-    background-color: rgb(112, 88, 152);
-}
-.dragon {
-    background-color: rgb(112, 56, 248);
-}
-.dark {
-    background-color: rgb(112, 88, 72);
-}
-.steel {
-    background-color: rgb(184, 184, 208);
-}
-.fairy {
-    background-color: rgb(238, 153, 172);
+:root {
+    --normal: rgb(168, 168, 120);
+    --fire: rgb(240, 128, 48);
+    --water: rgb(104, 144, 240);
+    --grass: rgb(120, 200, 80);
+    --electric: rgb(248, 208, 48);
+    --ice: rgb(152, 216, 216);
+    --fighting: rgb(192, 48, 40);
+    --poison: rgb(160, 64, 160);
+    --ground: rgb(224, 192, 104);
+    --flying: rgb(168, 144, 240);
+    --psychic: rgb(248, 88, 136);
+    --bug: rgb(168, 184, 32);
+    --rock: rgb(184, 160, 56);
+    --ghost: rgb(112, 88, 152);
+    --dragon: rgb(112, 56, 248);
+    --dark: rgb(112, 88, 72);
+    --steel: rgb(184, 184, 208);
+    --fairy: rgb(238, 153, 172);
 }

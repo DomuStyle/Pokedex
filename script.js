@@ -5,10 +5,12 @@ async function init() {
     getShowMoreBtnTemplate();
 }
 
-// global variables and array's
+// global variables and array's 
 let counter = 0;
 
 let pokemonData = []; // Array to store Pokémon data fetched from the api
+
+let results = [];
 
 // render functions
 function renderPokemonCards(pokemonArray) {
@@ -20,7 +22,10 @@ function renderPokemonCards(pokemonArray) {
         if (pokemon) { // Check if data was successfully fetched
             
             if (counter < 24) {
-                html += getPokemonCardsTemplate(pokemon);
+                let cardTemplate = getPokemonCardsTemplate(pokemon);
+                let dynamicBacground = renderDynamicBackground(pokemon);
+                let updatedCardTemplate = cardTemplate.replace('class="card_display"', `class="card_display" ${dynamicBacground}`);
+                html += updatedCardTemplate;
                 counter++;
             } else {
                 break;
@@ -31,13 +36,21 @@ function renderPokemonCards(pokemonArray) {
     contentDiv.innerHTML = html;
 }
 
-function renderDynamicBackground(typeColors) {
-    if (typeColors.length === 1) {
-        return `background-color: ${typeColors[0]};`;
-    } else if (typeColors.length === 2) {
-        return `background: radial_gradient(${typeColors[0]} 50%, ${typeColors[1]} 50%);`;
-    };
+// render dynamic bacgrounds
+function renderDynamicBackground(pokemon) {
+    const typeClasses = pokemon.types.map(type => type.type.name);
+    let backgroundStyle = '';
+    
+    if (typeClasses.length > 1) {
+        backgroundStyle = `background: radial-gradient(circle, var(--${typeClasses[1]}), var(--${typeClasses[1]}) 20%, var(--${typeClasses[0]}) 60%, var(--${typeClasses[0]}));`;
+    } else {
+        // If there's only one type, use that for the background
+        backgroundStyle = `background-color: var(--${typeClasses[0]});`;
+    }
+    
+    return `style="${backgroundStyle}"`;
 }
+
 // search pokemon function
 function searchPokemon() {
     let input = document.getElementById('search_pokemon').value.toLowerCase();
@@ -46,8 +59,6 @@ function searchPokemon() {
         document.getElementById('suggestions').innerHTML = '';
         return;
     }
-
-    let results = [];
 
     results = pokemonData.filter(pokemon => pokemon.name.toLowerCase().startsWith(input));
    
