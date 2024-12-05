@@ -29,6 +29,7 @@ async function loadMorePokemon() {
     }
 }
 
-// function toggleOverlay() {
-//     if  (!document.getElementById(''))
-// }
+function toggleOverlay() {
+    let overlayDiv = document.getElementById('overlay');
+    overlayDiv.classList.toggle('d_none')
+}

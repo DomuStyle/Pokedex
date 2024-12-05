@@ -29,7 +29,7 @@
 }
 
 .pokemon_card:hover {
-    transform: scale(0.95);
+    transform: scale(1.05);
 }
 
 .card_header {
