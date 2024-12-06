@@ -10,7 +10,7 @@ let counter = 0;
 
 let pokemonData = []; // Array to store Pokémon data fetched from the api
 
-let results = [];
+let results = []; // array to store results for autocomplete function
 
 // render functions
 function renderPokemonCards(pokemonArray) {
@@ -29,8 +29,7 @@ function renderPokemonCards(pokemonArray) {
                 counter++;
             } else {
                 break;
-            }
-            
+            }  
         }
     }
     contentDiv.innerHTML = html;
@@ -47,7 +46,6 @@ function renderDynamicBackground(pokemon) {
         // If there's only one type, use that for the background
         backgroundStyle = `background-color: var(--${typeClasses[0]});`;
     }
-    
     return `style="${backgroundStyle}"`;
 }
 

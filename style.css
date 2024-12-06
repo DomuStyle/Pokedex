@@ -19,19 +19,6 @@ header {
     position: relative;
 }
 
-header img {
-    height: 80px;
-    width: 90px;
-    margin-left: 32px;
-    filter: drop-shadow(2px 4px 6px black);
-}
-
-.header_text_img {
-    width: 180px;
-    margin: 0;
-    filter: none;
-}
-
 main {
     height: 100%;
     object-fit: contain;
@@ -41,6 +28,7 @@ main {
 footer {
     height: 128px;
     display: flex;
+    flex-direction: column;
     align-items: center;
     justify-content: center;
     border-top: 2px solid black;

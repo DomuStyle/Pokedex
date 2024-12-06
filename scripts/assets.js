@@ -33,3 +33,7 @@ function toggleOverlay() {
     let overlayDiv = document.getElementById('overlay');
     overlayDiv.classList.toggle('d_none')
 }
+
+function closeOverlay() {
+    
+}

@@ -11,29 +11,36 @@
     <link rel="stylesheet" href="./styles/assets.css">
 </head>
 <body onload="init()">
-    <div id="overlay" class="d_none" onclick="toggleOverlay()"></div>
-        <header>
-            <div class="header_title">
-                <img src="./assets/icons/pokeball-no-bg_427x364.png" alt="">
-                <img class="header_text_img" src="./assets/icons/Pokedex_text.png" alt="">
+    <div id="overlay" class="d_none" onclick="toggleOverlay()">
+        <div class="detail_card_border" style="">
+            <div class="details_card_background">
+
             </div>
-            <nav>
-                <input type="text" placeholder=" enter pokemon name" id="search_pokemon" onkeyup="searchPokemon()">
-                <button onclick="searchPokemon()">search Pokemon</button>
-                <div id="suggestions"></div>
-            </nav>
-        </header>
-        <main>
-            <div id="detail_content"></div>
-            <div id="content"></div>
-            <div id="show_more_btn"></div>
-            <img src="" alt="" id="test_img">
-        </main>
-        <footer>
-            <img src="./assets/icons/pokemon-1536847_640.png" alt="">
-            <a href="https://www.textstudio.com/">Text generated on textstudio.com</a>
-        </footer>
+        </div>
     </div>
+    <header>
+        <div class="header_title">
+            <img class="pokeball_img" src="./assets/icons/pokeball-no-bg_427x364.png" alt="">
+            <img class="pokedex_text_img" src="./assets/icons/Pokedex_text.png" alt="">
+        </div>
+        <nav>
+            <input type="text" placeholder=" enter pokemon name" id="search_pokemon" onkeyup="searchPokemon()">
+            <button onclick="searchPokemon()">search Pokemon</button>
+            <div id="suggestions"></div>
+        </nav>
+    </header>
+    <main>
+        <div id="content"></div>
+        <div id="show_more_btn"></div>
+        <img src="" alt="" id="test_img">
+    </main>
+    <footer>
+        <div class="footer_title">
+            <img class="pokeball_img" src="./assets/icons/pokeball-no-bg_427x364.png" alt="">
+            <img class="pokedex_text_img" src="./assets/icons/Pokedex_text.png" alt="">
+        </div>
+        <a href="https://www.textstudio.com/">Text generated on textstudio.com</a>
+    </footer>   
 </body>
 <script src="./scripts/assets.js"></script>
 <script src="./scripts/fetch.js"></script>

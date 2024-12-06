@@ -49,3 +49,26 @@
     background-color: rgba(0, 0, 0, 0.5);
     z-index: 2;
 }
+
+.detail_card_border {
+    height: 640px;
+    width: 460px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: rgb(17, 17, 17);
+    position: absolute;
+    top: calc(50% - (360px / 2));
+    left: calc(50% - (460px / 2));
+    z-index: 2;
+    border-radius: 16px;
+}
+
+.details_card_background {
+    height: 615px;
+    width: 432px;
+    background-color: rgb(67, 155, 255);
+    border-radius: 8px;
+    z-index: 3;
+    border: 3px solid rgba(37, 37, 37, 0.9);
+}

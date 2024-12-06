@@ -60,3 +60,17 @@
 .card_body p {
     margin: 8px 16px;
 }
+
+
+.pokeball_img {
+    height: 80px;
+    width: 94px;
+    margin-left: 32px;
+    filter: drop-shadow(2px 4px 6px black);
+}
+
+.pokedex_text_img {
+    width: 180px;
+    margin: 0;
+    filter: none;
+}
