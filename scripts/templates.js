@@ -27,7 +27,36 @@ function getPokemonCardsTemplate(pokemon, index) {
         </div>`;
 }
 
+// function getDetailOverlayTemplate(pokemon) {
+//     let abilityItem = pokemon.abilities.map(ability => ability.ability.name).join(", ");
+//     let dynamicBackground = renderDynamicBackground(pokemon);
+
+//     return `
+//             <div class="detail_card_border" onClick="childClickEvent()">
+//                 <div class="details_card_background" ${dynamicBackground}>
+//                     <div class="overlay_header">
+//                         <button onClick="toggleOverlay()" class="close_button">X</button>
+//                     <p class="overlay_id"># ${pokemon.id}</p><h2 class="overlay_name">${pokemon.name}</h2>
+//                     </div>
+//                         <img class="overlay_img" src="${pokemon.sprites.other.home.front_default}" alt="${pokemon.name}_image">
+//                 </div>
+//                 <div class="overlay_body">
+//                     <p><b>Height:</b> ${pokemon.height}m</p>
+//                     <p><b>Weight:</b> ${pokemon.weight} kg</p>
+//                     <p><b>Base XP:</b> ${pokemon.base_experience}</p>
+//                     <p><b>Abilities:</b> ${abilityItem}</p>
+//                 </div>
+//             </div>
+//             `;
+// }
+
 function getDetailOverlayTemplate(pokemon) {
+    // Validate the Pokémon object before rendering
+    if (!pokemon || !pokemon.abilities) {
+        console.error("Invalid Pokémon data provided to overlay template:", pokemon);
+        return `<div class="error-message">Invalid Pokémon Data</div>`;
+    }
+
     let abilityItem = pokemon.abilities.map(ability => ability.ability.name).join(", ");
     let dynamicBackground = renderDynamicBackground(pokemon);
 
