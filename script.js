@@ -22,7 +22,7 @@ function renderPokemonCards(pokemonArray) {
         if (pokemon) { // Check if data was successfully fetched
             
             if (counter < 24) {
-                let cardTemplate = getPokemonCardsTemplate(pokemon);
+                let cardTemplate = getPokemonCardsTemplate(pokemon, index);
                 let dynamicBacground = renderDynamicBackground(pokemon);
                 let updatedCardTemplate = cardTemplate.replace('class="card_display"', `class="card_display" ${dynamicBacground}`);
                 html += updatedCardTemplate;
@@ -33,6 +33,15 @@ function renderPokemonCards(pokemonArray) {
         }
     }
     contentDiv.innerHTML = html;
+}
+
+// render details card overlay
+function renderDetailsOverlay(index) {
+    let overlayDiv = document.getElementById('overlay');
+    let pokemon = pokemonData[index];
+    let overlayTemplate = getDetailOverlayTemplate(pokemon);
+    overlayDiv.innerHTML = overlayTemplate;
+    toggleOverlay();
 }
 
 // render dynamic bacgrounds
@@ -77,7 +86,8 @@ function searchPokemon() {
 
 function selectPokemon(name) {
     document.getElementById('search_pokemon').value = name;
-    document.getElementById('suggestions').innerHTML = ''; // Clear suggestions if one is selected
+    document.getElementById('suggestions').innerHTML = '';
+    toggleOverlay(name);
 }
 
 // log stored array for development | delete if app finished!
