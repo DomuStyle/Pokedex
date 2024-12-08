@@ -97,7 +97,10 @@
 .overlay_body {
     z-index: 4;
     position: absolute;
-    top: 70%;
+    top: 60%;
     left: 24px;
-
+    color: black;
+    -webkit-text-stroke: 1px #fff;
+    font-size: 24px;
+    font-weight: 800;
 }

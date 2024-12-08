@@ -32,8 +32,7 @@ function getDetailOverlayTemplate(pokemon) {
     let dynamicBackground = renderDynamicBackground(pokemon);
 
     return `
-            <div class="detail_card_border">
-                
+            <div class="detail_card_border" onClick="childClickEvent()">
                 <div class="details_card_background" ${dynamicBackground}>
                     <div class="overlay_header">
                         <button onClick="toggleOverlay()" class="close_button">X</button>

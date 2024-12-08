@@ -34,6 +34,9 @@ function toggleOverlay() {
     overlayDiv.classList.toggle('d_none')
 }
 
-function closeOverlay() {
-    
+function childClickEvent() {
+    event.stopPropagation();
 }
+// function closeOverlay() {
+    
+// }
