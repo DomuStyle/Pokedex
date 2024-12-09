@@ -8,7 +8,7 @@ function getLoadingSpinnertemplate() {
 
 function getPokemonCardsTemplate(pokemon, index) {
     let dynamicBackground = renderDynamicBackground(pokemon);
-
+    
     return `
         <div class="pokemon_card" onClick="renderDetailsOverlay(${index}), toggleOverlay()">
             <div class="card_header">
@@ -18,8 +18,8 @@ function getPokemonCardsTemplate(pokemon, index) {
                 <img src="${pokemon.sprites.other.home.front_default}" alt="${pokemon.name}_image">
             </div>
             <div class="card_body">
-                <p><b>height:</b> ${pokemon.height}m</p>
-                <p><b>weight:</b> ${pokemon.weight} kg</p>
+                <p><b>height:</b> ${pokemon.height / 10}m</p>
+                <p><b>weight:</b> ${pokemon.weight / 10} kg</p>
                 <p><b>Base-xp:</b> ${pokemon.base_experience}</p>
             </div>        
         </div>`;

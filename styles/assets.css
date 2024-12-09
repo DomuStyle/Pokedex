@@ -112,7 +112,12 @@
     top: 60%;
     left: 24px;
     color: black;
-    -webkit-text-stroke: 1px #fff;
+    /* -webkit-text-stroke: 1px #fff; */
     font-size: 24px;
     font-weight: 800;
+    
+}
+
+.navigation_buttons {
+    position: absolute;
 }

@@ -91,6 +91,4 @@ function selectPokemon(name) {
 }
 
 // log stored array for development | delete if app finished!
-console.log(pokemonData);
-
-[0].id
+// console.log(pokemonData);

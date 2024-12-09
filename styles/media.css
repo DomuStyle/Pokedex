@@ -1,0 +1,25 @@
+@media  (max-width: 600px) {
+    header {
+        flex-direction: column;
+    }
+
+    #search_pokemon {
+        margin: 0;
+        margin-bottom: 8px;
+    }
+
+    .header_title {
+        margin-top: 16px;
+    }
+
+    .pokeball_img {
+        height: 60px;
+        width: 74px;
+        margin-left: 0;
+    }
+
+    .pokedex_text_img {
+        width: 140px;
+        margin: 0;
+    }
+}
