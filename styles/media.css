@@ -23,3 +23,28 @@
         margin: 0;
     }
 }
+
+@media  (max-width: 500px) {
+
+    #overlay {
+        display: flex;
+        align-items: center;
+    }
+
+    .detail_card_border {
+        width: 318px;
+        position: absolute;
+        top: 30%;
+        left: 0;
+    }
+
+    .overlay_img {
+        position: absolute;
+        top: 15%;
+        left: 0;
+    }
+
+    .details_card_background {
+        width: 310px;
+    }
+}
