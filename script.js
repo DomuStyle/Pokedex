@@ -39,9 +39,9 @@ function renderPokemonCards(pokemonArray) {
 function renderDetailsOverlay(index) {
     let overlayDiv = document.getElementById('overlay');
     let pokemon = pokemonData[index];
-    let overlayTemplate = getDetailOverlayTemplate(pokemon);
-    overlayDiv.innerHTML = overlayTemplate;
-    toggleOverlay();
+    // console.log('Index before template:', index);
+    let overlayTemplate = getDetailOverlayTemplate(pokemon, index);
+    overlayDiv.innerHTML = overlayTemplate; 
 }
 
 // render dynamic bacgrounds
@@ -75,7 +75,7 @@ function searchPokemon() {
     let suggestionHTML = '';
     for (let index = 0; index < results.length; index++) {
         suggestionHTML += `
-                	    <p onclick="selectPokemon('${results[index].name}')">
+                	    <p onclick="renderDetailsOverlay('${results[index].id -1}'), toggleOverlay()">
                         ${results[index].name}
                         </p>
                         `;
@@ -92,3 +92,5 @@ function selectPokemon(name) {
 
 // log stored array for development | delete if app finished!
 console.log(pokemonData);
+
+[0].id

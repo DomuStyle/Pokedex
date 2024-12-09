@@ -40,6 +40,19 @@ function toggleOverlay() {
     overlayDiv.classList.toggle('d_none')
 }
 
+
+function showNextPokemon(index) {
+    index = (index + 1) % pokemonData.length;
+    document.getElementById('overlay').innerHTML = '';
+    renderDetailsOverlay(index);
+}
+
+function showPreviousPokemon(index) {
+    index = (index - 1 + pokemonData.length) % pokemonData.length;
+    document.getElementById('overlay').innerHTML = '';
+    renderDetailsOverlay(index);
+}
+
 // prevent childelement onClick from bubbling up.
 function childClickEvent() {
     event.stopPropagation();
