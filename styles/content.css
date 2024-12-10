@@ -4,6 +4,8 @@
     align-items: center;
     justify-content: center;
     margin: 32px 64px;
+    max-width: calc(100% - (100vw - 1440px));
+    width: 100%;
 }
 
 #suggestions p {

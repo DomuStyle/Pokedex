@@ -30,6 +30,7 @@
     width: 128px;
     border-radius: 16px;
     filter: drop-shadow(2px 4px 6px black);
+    margin: 16px;
 }
 
 #show_more_btn button:hover {
@@ -46,6 +47,7 @@
     position: fixed;
     top: 0;
     left: 0;
+    right: 0;
     width: 100%;
     height: 100%;
     background-color: rgba(0, 0, 0, 0.5);
@@ -61,7 +63,7 @@
     flex-direction: column;
     background-color: rgb(17, 17, 17);
     position: absolute;
-    top: calc(50% - (360px / 2));
+    top: calc(30% - (360px / 2));
     left: calc(50% - (460px / 2));
     z-index: 2;
     border-radius: 16px;
@@ -109,7 +111,7 @@
 .overlay_body {
     z-index: 4;
     position: absolute;
-    top: 60%;
+    top: 412px;
     left: 24px;
     color: black;
     /* -webkit-text-stroke: 1px #fff; */
@@ -120,4 +122,6 @@
 
 .navigation_buttons {
     position: absolute;
+    top: 200px;
+    left: 64px;
 }

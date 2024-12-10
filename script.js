@@ -2,7 +2,10 @@
 async function init() {
     showLoadingSpinner();
     await fetchAllPokemon();
-    getShowMoreBtnTemplate();
+
+    // if (counter = 24) {
+    //     getShowMoreBtnTemplate();
+    // }
 }
 
 // global variables and array's 
@@ -33,6 +36,7 @@ function renderPokemonCards(pokemonArray) {
         }
     }
     contentDiv.innerHTML = html;
+    getShowMoreBtnTemplate();
 }
 
 // render details card overlay
@@ -91,4 +95,4 @@ function selectPokemon(name) {
 }
 
 // log stored array for development | delete if app finished!
-// console.log(pokemonData);
+console.log(pokemonData);

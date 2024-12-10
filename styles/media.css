@@ -1,5 +1,5 @@
 @media  (max-width: 600px) {
-    header {
+    .header_section {
         flex-direction: column;
     }
 
@@ -9,7 +9,7 @@
     }
 
     .header_title {
-        margin-top: 16px;
+        margin: 16px;
     }
 
     .pokeball_img {
@@ -25,26 +25,35 @@
 }
 
 @media  (max-width: 500px) {
-
-    #overlay {
-        display: flex;
-        align-items: center;
-    }
-
     .detail_card_border {
         width: 318px;
         position: absolute;
-        top: 30%;
+        top: 15%;
         left: 0;
+        height: 340px;
     }
 
     .overlay_img {
         position: absolute;
         top: 15%;
-        left: 0;
+        left: 77px;
+        height: 150px;
+    }
+
+    .overlay_body {
+        margin: 4px;
+        font-size: 16px;
+        position: absolute;
+        top: 167px;
     }
 
     .details_card_background {
-        width: 310px;
+        width: 296px;
+        height: 317px;
+    }
+
+    .navigation_buttons {
+        top: 146px;
+        width: 100%;
     }
 }

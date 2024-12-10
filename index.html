@@ -15,14 +15,16 @@
     <div id="overlay" class="d_none" onclick="toggleOverlay()">
     </div>
     <header>
-        <div class="header_title">
-            <img class="pokeball_img" src="./assets/icons/pokeball-no-bg_427x364.png" alt="">
-            <img class="pokedex_text_img" src="./assets/icons/Pokedex_text.png" alt="">
+        <div class="header_section">
+            <div class="header_title">
+                <img class="pokeball_img" src="./assets/icons/pokeball-no-bg_427x364.png" alt="">
+                <img class="pokedex_text_img" src="./assets/icons/Pokedex_text.png" alt="">
+            </div>
+            <nav>
+                <input type="text" placeholder=" enter pokemon name" id="search_pokemon" onkeyup="searchPokemon()">
+                <div id="suggestions"></div>
+            </nav>
         </div>
-        <nav>
-            <input type="text" placeholder=" enter pokemon name" id="search_pokemon" onkeyup="searchPokemon()">
-            <div id="suggestions"></div>
-        </nav>
     </header>
     <main>
         <div id="content"></div>
