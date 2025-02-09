@@ -28,13 +28,20 @@ function getPokemonCardsTemplate(pokemon, index) {
 function getDetailOverlayTemplate(pokemon, index) {
     let abilityItem = pokemon.abilities.map(ability => ability.ability.name).join(", ");
     let dynamicBackground = renderDynamicBackground(pokemon);
-
+    console.log(pokemon);
+    
     return `
             <div class="detail_card_border" onClick="childClickEvent()">
                 <div class="details_card_background" ${dynamicBackground}>
                     <div class="overlay_header">
-                        <p class="overlay_id"># ${pokemon.id}</p><h2 class="overlay_name">${pokemon.name}</h2>
+                        <div class="overlay_header1">
+                            <p class="overlay_id"># ${pokemon.id}</p><h2 class="overlay_name">${pokemon.name}</h2>
+                        </div>
+                        <div class="overlay_header2">
+                            <p class="overlay_battlepoints">BP: ${pokemon.stats[0].base_stat}</p><img class="overlay_power_img" src="" alt="poke_power_image">
+                        </div>
                     </div>
+
                     <img class="overlay_img" src="${pokemon.sprites.other.home.front_default}" alt="${pokemon.name}_image">
                 </div>
                 <div class="overlay_body">

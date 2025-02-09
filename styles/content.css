@@ -23,7 +23,7 @@
 .pokemon_card {
     /* height: 256px; */
     width: 196px;
-    background-color: rgb(163, 163, 163);
+    background-color: rgb(205 205 205);
     margin: 8px 16px;
     border-radius: 16px;
     border: 2px solid rgb(185, 185, 185);

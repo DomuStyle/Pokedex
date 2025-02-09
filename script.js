@@ -2,6 +2,7 @@
 async function init() {
     showLoadingSpinner();
     await fetchAllPokemon();
+    // renderPokePowers();
 
     // if (counter = 24) {
     //     getShowMoreBtnTemplate();
@@ -95,4 +96,4 @@ function selectPokemon(name) {
 }
 
 // log stored array for development | delete if app finished!
-console.log(pokemonData);
+// console.log(pokemonData);

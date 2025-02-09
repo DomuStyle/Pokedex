@@ -4,7 +4,7 @@ html {
 }
 
 body {
-    background: radial-gradient(rgb(172, 172, 172),rgb(77, 77, 77));
+    background: radial-gradient(rgb(205 205 205)50%,rgb(77, 77, 77));
     margin: 0;
     min-height: 100vh;
     max-width: 100%;
@@ -22,9 +22,22 @@ header {
     display: flex;
     align-items: center;
     justify-content: center;
-    border-bottom: 2px solid black;
-    background-color: rgb(131, 131, 131);
+    filter: drop-shadow(2px 4px 6px black);
+    background-color: rgb(205 205 205);
     position: relative;
+    border-bottom: 5px solid rgba(255, 0, 0, 1);
+    animation: rainbow 5s linear infinite;
+}
+
+@keyframes rainbow {
+    0% { border-bottom-color: red; }
+    14% { border-bottom-color: orange; }
+    28% { border-bottom-color: yellow; }
+    42% { border-bottom-color:  green; }
+    57% { border-bottom-color: blue; }
+    71% { border-bottom-color:  indigo; }
+    85% { border-bottom-color: violet; }
+    100% { border-bottom-color: red; }
 }
 
 .header_section {
@@ -51,7 +64,13 @@ footer {
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    border-top: 2px solid black;
+    border-top: 2px solid rgba(121, 121, 121, 0.9);
+    filter: drop-shadow(2px 4px 6px black);
+    background-color: rgb(205 205 205);
+    /* position: fixed;
+    left: 0;
+    right: 0;
+    bottom: 0; */
 }
 
 footer img {
