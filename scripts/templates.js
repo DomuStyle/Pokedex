@@ -35,7 +35,7 @@ function getDetailOverlayTemplate(pokemon, index) {
     console.log(pokemon);
     
     return `
-            <div class="detail_card_border" onClick="childClickEvent()">
+            <div class="detail_card_border moving_gradient" onClick="childClickEvent()">
                 <div class="details_card_background" ${dynamicBackground}>
                     <div class="overlay_header">
                         <div class="overlay_header1">

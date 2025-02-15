@@ -28,6 +28,7 @@ header {
     position: relative;
     border-bottom: 4px solid rgba(0, 0, 0, 0.9);
     flex-direction: column;
+    padding-top: 16px;
 }
 
 
@@ -119,18 +120,18 @@ footer {
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center;
+    justify-content: flex-start;
     border-top: 2px solid rgba(121, 121, 121, 0.9);
     filter: drop-shadow(2px 4px 6px black);
     background-color: rgb(225 225 225);
-    /* position: fixed;
-    left: 0;
-    right: 0;
-    bottom: 0; */
+    
 }
 
 footer img {
     height: 64px;
+}
+.footer_title {
+    padding-top: 16px;
 }
 
 h1 {
@@ -161,4 +162,9 @@ h2 {
     height: 4px;
     width: 100%;
     border-top: 2px solid black;
+}
+.rainbow_border_footer {
+    height: 4px;
+    width: 100%;
+    border-bottom: 2px solid black;
 }
