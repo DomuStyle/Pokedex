@@ -25,7 +25,14 @@ header {
     filter: drop-shadow(2px 4px 6px black);
     background-color: rgb(205 205 205);
     position: relative;
-    border-bottom: 5px solid rgba(255, 0, 0, 1);
+    border-bottom: 4px solid rgba(0, 0, 0, 0.9);
+}
+
+
+/* RAINBOW BORDER ANIMATION */
+
+/* header {
+    border-bottom: 4px solid rgba(255, 0, 0, 1);
     animation: rainbow 5s linear infinite;
 }
 
@@ -38,6 +45,52 @@ header {
     71% { border-bottom-color:  indigo; }
     85% { border-bottom-color: violet; }
     100% { border-bottom-color: red; }
+} */
+
+
+/* Floating Cards animation */
+
+.pokemon_card_container {
+    /* Basic styling for the card */
+    width: 200px;
+    height: 300px;
+    background-color: #ffffff;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    /* Positioning for the floating effect */
+    position: relative;
+    /* Transition for smooth movement */
+    transition: transform 0.3s ease;
+    
+    /* Animation for floating effect */
+    animation: float 5s ease-in-out infinite;
+}
+
+.pokemon_card_container:hover {
+    /* Wiggle effect on hover */
+    animation: wiggle 0.3s infinite;
+    /* Stop the floating animation */
+    animation-play-state: paused;
+}
+
+@keyframes float {
+    0% {
+        transform: translateY(0px);
+    }
+    50% {
+        transform: translateY(-10px);
+    }
+    100% {
+        transform: translateY(0px);
+    }
+}
+
+@keyframes wiggle {
+    0% { transform: rotate(0deg); }
+    25% { transform: rotate(1deg); }
+    50% { transform: rotate(0deg); }
+    75% { transform: rotate(-1deg); }
+    100% { transform: rotate(0deg); }
 }
 
 .header_section {

@@ -10,6 +10,7 @@ function getPokemonCardsTemplate(pokemon, index) {
     let dynamicBackground = renderDynamicBackground(pokemon);
     
     return `
+    <div class="pokemon_card_container">
         <div class="pokemon_card" onClick="renderDetailsOverlay(${index}), toggleOverlay()">
             <div class="card_header">
                 <p class="card_id"># ${pokemon.id}</p><h2 class="card_name">${pokemon.name}</h2>
@@ -22,7 +23,10 @@ function getPokemonCardsTemplate(pokemon, index) {
                 <p><b>weight:</b> ${pokemon.weight / 10} kg</p>
                 <p><b>Base-xp:</b> ${pokemon.base_experience}</p>
             </div>        
-        </div>`;
+        </div>
+    </div>
+    `
+    ;
 }
 
 function getDetailOverlayTemplate(pokemon, index) {
