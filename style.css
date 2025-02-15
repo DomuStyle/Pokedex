@@ -54,9 +54,9 @@ header {
     /* Basic styling for the card */
     width: 200px;
     height: 300px;
-    background-color: #ffffff;
+    /* background-color: #ffffff; */
     border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    /* box-shadow: 0 4px 8px rgba(0,0,0,0.1); */
     /* Positioning for the floating effect */
     position: relative;
     /* Transition for smooth movement */
@@ -64,6 +64,7 @@ header {
     
     /* Animation for floating effect */
     animation: float 5s ease-in-out infinite;
+    margin: 0 24px;
 }
 
 .pokemon_card_container:hover {

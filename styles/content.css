@@ -25,9 +25,9 @@
     width: 196px;
     background-color: rgb(205 205 205);
     margin: 8px 16px;
-    border-radius: 16px;
+    border-radius: 8px;
     border: 2px solid rgb(185, 185, 185);
-    filter: drop-shadow(2px 4px 6px black);
+    filter: drop-shadow(6px 6px 3px black);
     display: flex;
     flex-direction: column;
     align-items: center;
