@@ -108,6 +108,7 @@
     border-radius: 8px 8px 24px 8px;
     border: 3px solid rgba(121, 121, 121, 0.9);
     filter: drop-shadow(2px 4px 6px black);
+    font-family: 'Lucida Sans Unicode';
 }
 
 .overlay_id {
@@ -146,9 +147,14 @@
     left: 24px;
     color: black;
     /* -webkit-text-stroke: 1px #fff; */
+    font-family: 'Lucida Sans Unicode';
     font-size: 24px;
     font-weight: 800;
-    
+}
+
+.overlay_body_text {
+    margin: 0;
+    padding: 0;
 }
 
 .navigation_buttons {

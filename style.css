@@ -4,10 +4,11 @@ html {
 }
 
 body {
-    background: radial-gradient(rgb(205 205 205)50%,rgb(77, 77, 77));
+    background: radial-gradient(rgb(225 225 225) 73%, rgb(77, 77, 77));
     margin: 0;
     min-height: 100vh;
     max-width: 100%;
+    /* min-height: 100vh; */
 }
 
 /* body > * {
@@ -21,11 +22,12 @@ header {
     height: 128px;
     display: flex;
     align-items: center;
-    justify-content: center;
+    justify-content: space-between;
     filter: drop-shadow(2px 4px 6px black);
-    background-color: rgb(205 205 205);
+    background-color: rgb(225 225 225);
     position: relative;
     border-bottom: 4px solid rgba(0, 0, 0, 0.9);
+    flex-direction: column;
 }
 
 
@@ -64,7 +66,7 @@ header {
     
     /* Animation for floating effect */
     animation: float 5s ease-in-out infinite;
-    margin: 0 24px;
+    margin: 16px 24px;
 }
 
 .pokemon_card_container:hover {
@@ -120,7 +122,7 @@ footer {
     justify-content: center;
     border-top: 2px solid rgba(121, 121, 121, 0.9);
     filter: drop-shadow(2px 4px 6px black);
-    background-color: rgb(205 205 205);
+    background-color: rgb(225 225 225);
     /* position: fixed;
     left: 0;
     right: 0;
@@ -137,4 +139,26 @@ h1 {
 
 h2 {
     font-size: 16px;
+}
+
+.moving_gradient {
+    /* Static gradient background */
+    background: linear-gradient(45deg, red, orange, yellow, green, blue, indigo, white );
+    
+    /* Animation properties */
+    background-size: 400% 400%;
+    
+    animation: moveGradient 10s ease infinite;
+}
+
+@keyframes moveGradient {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+.rainbow_border_header {
+    height: 4px;
+    width: 100%;
+    border-top: 2px solid black;
 }

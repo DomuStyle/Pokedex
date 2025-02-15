@@ -49,10 +49,10 @@ function getDetailOverlayTemplate(pokemon, index) {
                     <img class="overlay_img" src="${pokemon.sprites.other.home.front_default}" alt="${pokemon.name}_image">
                 </div>
                 <div class="overlay_body">
-                    <p><b>Height:</b> ${pokemon.height}m</p>
-                    <p><b>Weight:</b> ${pokemon.weight} kg</p>
-                    <p><b>Base XP:</b> ${pokemon.base_experience}</p>
-                    <p><b>Abilities:</b> ${abilityItem}</p>
+                    <p class="overlay_body_text"><b>Height:</b> ${pokemon.height}m</p>
+                    <p class="overlay_body_text"><b>Weight:</b> ${pokemon.weight} kg</p>
+                    <p class="overlay_body_text"><b>Base XP:</b> ${pokemon.base_experience}</p>
+                    <p class="overlay_body_text"><b>Abilities:</b> ${abilityItem}</p>
                     <div class="navigation_buttons">
                         <button onClick="showPreviousPokemon(${index})">Previous</button>
                         <button onClick="showNextPokemon(${index})">Next</button>
