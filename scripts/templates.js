@@ -12,9 +12,11 @@ function getPokemonCardsTemplate(pokemon, index) {
     return `
     <div class="pokemon_card_container">
         <div class="pokemon_card" onClick="renderDetailsOverlay(${index}), toggleOverlay()">
-            <div class="card_header">
-                <p class="card_id"># ${pokemon.id}</p><h2 class="card_name">${pokemon.name}</h2>
-            </div>
+            <div class="header_bg">
+                <div class="card_header">
+                    <p class="card_id"># ${pokemon.id}</p><h2 class="card_name">${pokemon.name}</h2>
+                </div>
+            </div>    
             <div class="card_display" ${dynamicBackground}>
                 <img src="${pokemon.sprites.other.home.front_default}" alt="${pokemon.name}_image">
             </div>
