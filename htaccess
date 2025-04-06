@@ -1,0 +1,27 @@
+# Aktiviert die Umschreibefunktion (Rewrite Engine) im Apache-Server
+RewriteEngine On
+
+# Überprüft, ob der HTTP-Host (also die Domain) dem Muster entspricht:
+# - Der erste Teil der Domain (z.B. "example") kann alphanumerische Zeichen und Bindestriche enthalten.
+# - Der zweite Teil ist die Domain (z.B. "example.com"), die ebenfalls alphanumerische Zeichen und Bindestriche enthalten kann und mit einer Top-Level-Domain (TLD) endet (z.B. .com, .org).
+# Das [NC] bedeutet, dass die Überprüfung der Groß- und Kleinschreibung ignoriert wird (case-insensitive).
+# Gilt für die Hauptdomain:
+# RewriteCond %{HTTP_HOST} ^([a-zA-Z0-9-]+\.[a-zA-Z]{2,})$ [NC]
+
+# Gilt für die Subdomain:
+RewriteCond %{HTTP_HOST} ^([a-zA-Z0-9-]+)\.([a-zA-Z0-9-]+\.[a-zA-Z]{2,})$ [NC]
+
+
+# Leitet alle Anfragen um und fügt "www." vor die Domain hinzu.
+# - %1 entspricht dem ersten Teil der Domain (z.B. "example").
+# - %2 entspricht dem zweiten Teil der Domain (z.B. "example.com").
+# - %{REQUEST_URI} fügt die angeforderte URI (z.B. "/path/to/resource") zur Umleitung hinzu.
+# Das [L,R=301] bedeutet, dass dies die letzte Regel ist (L) und eine permanente Weiterleitung (301) durchgeführt wird.
+RewriteRule ^ http://www.%1.%2%{REQUEST_URI} [L,R=301]
+
+# Regeln für Angular auf eigenem Server
+RewriteCond %{REQUEST_FILENAME} -s [OR]
+RewriteCond %{REQUEST_FILENAME} -l [OR]
+RewriteCond %{REQUEST_FILENAME} -d
+RewriteRule ^.*$ - [NC,L]
+RewriteRule ^(.*) /index.html [NC,L]

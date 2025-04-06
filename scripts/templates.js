@@ -1,7 +1,10 @@
 function getLoadingSpinnertemplate() {
     return `
-            <div class="loading_spinner">
-                <img src="./assets/icons/pokemon-1536847_640.png" alt="Pokeball_icon">
+            <div class="spinner_container">
+                <div class="loading_spinner">
+                    <img src="./assets/icons/pokemon-1536847_640.png" alt="Pokeball_icon">
+                </div>
+                <img class="pika_gif" src="./assets/Running-Pikachu-GIF.gif" alt="">
             </div>
             `;
 }
@@ -14,7 +17,8 @@ function getPokemonCardsTemplate(pokemon, index) {
         <div class="pokemon_card" onClick="renderDetailsOverlay(${index}), toggleOverlay()">
             <div class="header_bg">
                 <div class="card_header">
-                    <p class="card_id"># ${pokemon.id}</p><h2 class="card_name">${pokemon.name}</h2>
+                    <p class="card_id">${pokemon.id}</p>
+                    <h2 class="card_name">${pokemon.name}</h2>
                 </div>
             </div>    
             <div class="card_display" ${dynamicBackground}>
@@ -42,7 +46,7 @@ function getDetailOverlayTemplate(pokemon, index) {
                     <div class="details_card_display" ${dynamicBackground}>
                         <div class="overlay_header">
                             <div class="overlay_header1">
-                                <p class="overlay_id"># ${pokemon.id}</p><h2 class="overlay_name">${pokemon.name}</h2>
+                                <p class="overlay_id">${pokemon.id}</p><h2 class="overlay_name">${pokemon.name}</h2>
                             </div>
                             <div class="overlay_header2">
                                 <p class="overlay_battlepoints">BP: ${pokemon.stats[0].base_stat}</p><img class="overlay_power_img" src="" alt="poke_power_image">

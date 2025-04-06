@@ -9,6 +9,18 @@
     animation: loading-spinner 2s linear infinite;
 }
 
+.spinner_container {
+    position: relative;
+}
+
+.pika_gif {
+    position: absolute;
+    top: 185px;
+    left: 45px;
+    height: 63px;
+    width: 148px;
+}
+
 #search_pokemon {
     position: relative;
     margin-right: 32px;
@@ -97,9 +109,7 @@
 }
 
 .overlay_header {
-    padding-top: 8px;
-    padding-left: 8px;
-    padding-right: 8px;
+    padding: 8px 8px;
     width: 90%;
     height: 96px;
     display: flex;
@@ -123,31 +133,83 @@
     border: 3px solid rgba(121, 121, 121, 0.9);
     filter: drop-shadow(3px 4px 4px black);
     font-family: 'Lucida Sans Unicode';
+    margin-top: 6px;
 }
 
 .overlay_id {
     margin-left: 8px;
 }
 
-.overlay_header2 {
+/* .overlay_header2 { */
     /* background-color: rgb(34, 34, 34); */
-    filter: drop-shadow(3px 4px 4px black);
-    background-image: linear-gradient(45deg, rgb(156, 156, 156), rgba(225, 225, 225, 0.9));
+    /* filter: drop-shadow(3px 4px 4px black);
+    background-image: linear-gradient(45deg, rgb(141, 141, 141), rgba(225, 225, 225, 0.9));
     position: absolute;
-    top: 8px;
-    right: 8px;
+    top: 6px;
+    right: 16px;
     display: flex;
+    align-items: center;
+    justify-content: flex-end;
     flex-direction: row;
-    width: 35%;
-    height: 40px;
+    width: 75%;
+    height: 56px;
     border: 2px solid rgba(121, 121, 121, 0.9);
-    border-radius: 20px 20px;
+    border-radius: 8px 20px 50px 8px;
+    font-family: 'Lucida Sans Unicode';
+} */
+
+.overlay_header2 {
+     /* Static gradient with metallic colors */
+     background: linear-gradient(
+        45deg,
+        #8d8d8d,    /* Dark silver */
+        #a5a5a5,    /* Gradual gray */
+        #c3c3c3,    /* Lighter gray */
+        #e1e1e1,    /* Light silver */
+        #f0f0f0,    /* Subtle highlight */
+        #e1e1e1,    /* Light silver fade */
+        #c3c3c3,    /* Lighter gray return */
+        #a5a5a5,    /* Gradual gray */
+        #8d8d8d     /* Dark silver - seamless loop */
+    );
+    
+    /* Animation properties */
+    background-size: 400% 400%; /* Large size for smooth movement */
+    animation: metallicShift 7.50s ease infinite; /* Back-and-forth motion */
+    
+    /* Existing properties */
+    filter: drop-shadow(3px 4px 4px black);
+    position: absolute;
+    top: 6px;
+    right: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    flex-direction: row;
+    width: 75%;
+    height: 56px;
+    border: 2px solid rgba(83, 83, 83, 0.9);
+    border-radius: 8px 20px 50px 8px;
+    font-family: 'Lucida Sans Unicode';
+}
+
+/* Keyframes adapted from moveGradient */
+@keyframes metallicShift {
+    0% { background-position: 0% 50%; }    /* Start at left */
+    50% { background-position: 100% 50%; } /* Move to right */
+    100% { background-position: 0% 50%; }  /* Return to left */
+}
+
+.overlay_battlepoints {
+    font-family: 'Lucida Sans Unicode';
+    margin-right: 56px;
 }
 
 .overlay_power_img {
     height: 32px;
     width: 32px;
     border-radius: 16px;
+    margin-right: 8px;
 }
 
 .overlay_img {
