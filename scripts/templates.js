@@ -61,8 +61,8 @@ function getDetailOverlayTemplate(pokemon, index) {
                         <p class="overlay_body_text"><b>Base XP:</b> ${pokemon.base_experience}</p>
                         <p class="overlay_body_text"><b>Abilities:</b> ${abilityItem}</p>
                         <div class="navigation_buttons">
-                            <button onClick="showPreviousPokemon(${index})">Previous</button>
-                            <button onClick="showNextPokemon(${index})">Next</button>
+                            <img src="./assets/icons/arrowLeft.png" class="btn_left" onClick="showPreviousPokemon(${index})">
+                            <img src="./assets/icons/arrowRight.png" class="btn_right" onClick="showNextPokemon(${index})">
                         </div>
                     </div>
                 </div>

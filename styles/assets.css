@@ -67,6 +67,7 @@
 }
 
 .detail_card_border {
+    filter: drop-shadow(2px 4px 6px black);
     padding: 16px 14px;
     height: 640px;
     width: 460px;
@@ -80,6 +81,7 @@
     left: calc(50% - (460px / 2));
     z-index: 2;
     border-radius: 16px;
+    border: 1px solid black;
 }
 
 .details_card_background {
@@ -115,7 +117,7 @@
     display: flex;
     justify-content: space-between;
     /* background-color: rgb(70, 70, 70); */
-    border-radius: 8px 8px 8px 24px;
+    border-radius: 6px 6px 6px 24px;
 }
 
 .overlay_header1 {
@@ -130,14 +132,16 @@
     align-items: center;
     gap: 16px;
     border-radius: 8px 8px 24px 8px;
-    border: 3px solid rgba(121, 121, 121, 0.9);
-    filter: drop-shadow(3px 4px 4px black);
+    border: 3px inset rgba(121, 121, 121, 0.9);
+    /* filter: drop-shadow(3px 4px 4px black); */
     font-family: 'Lucida Sans Unicode';
-    margin-top: 6px;
+    margin-top: 10px;
 }
 
 .overlay_id {
     margin-left: 8px;
+    font-size: 18px;
+    font-weight: 700;
 }
 
 /* .overlay_header2 { */
@@ -181,16 +185,17 @@
     filter: drop-shadow(3px 4px 4px black);
     position: absolute;
     top: 6px;
-    right: 16px;
+    right: 11px;
     display: flex;
     align-items: center;
     justify-content: flex-end;
     flex-direction: row;
-    width: 75%;
-    height: 56px;
-    border: 2px solid rgba(83, 83, 83, 0.9);
-    border-radius: 8px 20px 50px 8px;
+    width: 93%;
+    height: 59px;
+    border: 7px solid rgba(83, 83, 83, 0.9);
+    border-radius: 8px 8px 50px 8px;
     font-family: 'Lucida Sans Unicode';
+    border-style: outset;
 }
 
 /* Keyframes adapted from moveGradient */
@@ -224,13 +229,18 @@
 .overlay_body {
     z-index: 4;
     position: absolute;
-    top: 412px;
-    left: 24px;
+    top: 407px;
+    left: 23px;
     color: black;
     /* -webkit-text-stroke: 1px #fff; */
     font-family: 'Lucida Sans Unicode';
     font-size: 24px;
     font-weight: 800;
+    height: 200px;
+    width: 418px;
+    padding: 12px 8px;
+    border-radius: 12px;
+    border: 3px inset black;
 }
 
 .overlay_body_text {
@@ -240,6 +250,75 @@
 
 .navigation_buttons {
     position: absolute;
-    top: 200px;
-    left: 64px;
+    top: 233px;
+    left: 120px;
+    width: auto;
+}
+
+.btn_left {
+    font-family: 'Lucida Sans Unicode';
+    color: #303030;
+    font-size: 18px;
+    font-weight: 800;
+
+    /* Static gradient with metallic colors */
+    background: linear-gradient(
+        45deg,
+        #3a3a3a,    /* Very dark silver */
+        #515151,    /* Very dark gradual gray */
+        #686868,    /* Dark muted gray */
+        #7f7f7f,    /* Darker mid-tone silver */
+        #969696,    /* Dark subtle highlight */
+        #7f7f7f,    /* Darker mid-tone silver fade */
+        #686868,    /* Dark muted gray return */
+        #515151,    /* Very dark gradual gray */
+        #3a3a3a     /* Very dark silver - seamless loop */
+    );
+    
+    /* Animation properties */
+    background-size: 400% 400%; /* Large size for smooth movement */
+    animation: metallicShift 7.50s ease infinite; /* Back-and-forth motion */
+    height: 48px;
+    width: 88px;
+    border-radius: 8px 8px 8px 24px;
+    border: 3px outset black;
+}
+
+.btn_left:hover {
+    transform: scale(0.95);
+    border-style: inset;
+}
+
+.btn_right {
+    font-family: 'Lucida Sans Unicode';
+    color: #303030;
+    font-size: 18px;
+    font-weight: 800;
+
+    /* Static gradient with metallic colors */
+    background: linear-gradient(
+        45deg,
+        #3a3a3a,    /* Very dark silver */
+        #515151,    /* Very dark gradual gray */
+        #686868,    /* Dark muted gray */
+        #7f7f7f,    /* Darker mid-tone silver */
+        #969696,    /* Dark subtle highlight */
+        #7f7f7f,    /* Darker mid-tone silver fade */
+        #686868,    /* Dark muted gray return */
+        #515151,    /* Very dark gradual gray */
+        #3a3a3a     /* Very dark silver - seamless loop */
+    );
+    
+    /* Animation properties */
+    background-size: 400% 400%; /* Large size for smooth movement */
+    animation: metallicShift 7.50s ease infinite; /* Back-and-forth motion */
+    height: 48px;
+    width: 88px;
+    border-radius: 8px 8px 24px 8px;
+    border: 3px outset black;
+}
+
+.btn_right:hover {
+    transform: scale(0.95);
+    border-style: inset;
 }
