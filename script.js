@@ -86,7 +86,7 @@ function searchPokemon() {
                         `;
     }
     suggestions.innerHTML = suggestionHTML;
-    console.log(results);
+    // console.log(results);
 }
 
 function selectPokemon(name) {

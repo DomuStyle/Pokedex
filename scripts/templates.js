@@ -49,7 +49,7 @@ function getDetailOverlayTemplate(pokemon, index) {
                                 <p class="overlay_id">${pokemon.id}</p><h2 class="overlay_name">${pokemon.name}</h2>
                             </div>
                             <div class="overlay_header2">
-                                <p class="overlay_battlepoints">BP: ${pokemon.stats[0].base_stat}</p><img class="overlay_power_img" src="" alt="poke_power_image">
+                                <p class="overlay_battlepoints">BP: ${pokemon.stats[0].base_stat}</p>
                             </div>
                         </div>
 

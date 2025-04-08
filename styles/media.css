@@ -1,5 +1,41 @@
 @media  (max-width: 640px) {
-    
+    .detail_card_border {
+        position: fixed;
+        top: 20%;
+        left: 16%;
+        height: 540px;
+        width: 380px;
+    }
+
+    .details_card_display {
+        height: 290px;
+        width: 340px;
+    }
+
+    .overlay_img {
+        height: 240px;
+        top: 10%;
+        left: 14%;
+    }
+
+    .overlay_header2 {
+        height: 55px;
+        top: 6px;
+        right: 5px;
+    }
+
+    .overlay_body {
+        font-size: 20px;
+        height: 170px;
+        width: 330px;
+        top: 340px;
+        left: 27px;
+    }
+
+    .navigation_buttons {
+        top: 202px;
+        left: 83px;
+    }
 }
 
 @media  (max-width: 600px) {
@@ -27,6 +63,10 @@
         width: 140px;
         margin: 0;
     }
+}
+
+@media  (max-width: 550px) {
+    
 }
 
 @media  (max-width: 500px) {

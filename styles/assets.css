@@ -16,9 +16,9 @@
 .pika_gif {
     position: absolute;
     top: 185px;
-    left: 45px;
+    left: 60px;
     height: 63px;
-    width: 148px;
+    width: 116px;
 }
 
 #search_pokemon {
@@ -208,6 +208,8 @@
 .overlay_battlepoints {
     font-family: 'Lucida Sans Unicode';
     margin-right: 56px;
+    font-size: 24px;
+    font-weight: 700;
 }
 
 .overlay_power_img {
@@ -232,6 +234,7 @@
     top: 407px;
     left: 23px;
     color: black;
+    background-image: radial-gradient(white 62%, lightgray);
     /* -webkit-text-stroke: 1px #fff; */
     font-family: 'Lucida Sans Unicode';
     font-size: 24px;

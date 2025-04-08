@@ -74,6 +74,7 @@
     padding: 0;
     margin: 0;
     color: white;
+    filter: drop-shadow(2px 3px 1px black);
 }
 
 .card_display {
@@ -113,7 +114,7 @@
 }
 
 .pokedex_text_img {
-    width: 180px;
+    width: 170px;
     margin: 0;
     filter: none;
 }
