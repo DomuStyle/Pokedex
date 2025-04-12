@@ -40,6 +40,10 @@
 
 @media  (max-width: 600px) {
 
+    header {
+        height: 143px;
+    }
+
     .header_section {
         flex-direction: column;
     }
@@ -66,39 +70,81 @@
 }
 
 @media  (max-width: 550px) {
-    
+    .detail_card_border {
+        position: fixed;
+        top: 20%;
+        left: 11%;
+        height: 540px;
+        width: 380px;
+    }
+
+    .details_card_display {
+        height: 290px;
+        width: 340px;
+    }
+
+    .overlay_img {
+        height: 240px;
+        top: 10%;
+        left: 14%;
+    }
+
+    .overlay_header2 {
+        height: 55px;
+        top: 6px;
+        right: 5px;
+    }
+
+    .overlay_body {
+        font-size: 20px;
+        height: 170px;
+        width: 330px;
+        top: 340px;
+        left: 27px;
+    }
+
+    .navigation_buttons {
+        top: 202px;
+        left: 83px;
+    }
 }
 
 @media  (max-width: 500px) {
     .detail_card_border {
-        width: 318px;
-        position: absolute;
-        top: 15%;
-        left: 0;
-        height: 340px;
+        position: fixed;
+        top: 20%;
+        left: 8%;
+        height: 540px;
+        width: 380px;
+    }
+
+    .details_card_display {
+        height: 290px;
+        width: 340px;
     }
 
     .overlay_img {
-        position: absolute;
-        top: 15%;
-        left: 77px;
-        height: 150px;
+        height: 240px;
+        top: 10%;
+        left: 14%;
+    }
+
+    .overlay_header2 {
+        height: 55px;
+        top: 6px;
+        right: 5px;
     }
 
     .overlay_body {
-        margin: 4px;
-        font-size: 16px;
-        position: absolute;
-        top: 167px;
-    }
-
-    .details_card_background {
-        width: 296px;
-        height: 317px;
+        font-size: 20px;
+        height: 170px;
+        width: 330px;
+        top: 340px;
+        left: 27px;
     }
 
     .navigation_buttons {
-        top: 146px;
-        width: 100%;
+        top: 202px;
+        left: 83px;
     }
 }
