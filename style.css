@@ -29,6 +29,7 @@ header {
     border-bottom: 4px solid rgba(0, 0, 0, 0.9);
     flex-direction: column;
     padding-top: 16px;
+    z-index: 10;
 }
 
 

@@ -64,29 +64,77 @@ function renderDynamicBackground(pokemon) {
 }
 
 // search pokemon function
+// function searchPokemon() {
+//     let input = document.getElementById('search_pokemon').value.toLowerCase();
+
+//     if (input.length < 3) {
+//         document.getElementById('suggestions').innerHTML = '';
+//         return;
+//     }
+
+//     results = pokemonData.filter(pokemon => pokemon.name.toLowerCase().startsWith(input));
+   
+//     let suggestions = document.getElementById('suggestions');
+//     suggestions.innerHTML = '';
+
+//     let suggestionHTML = '';
+//     for (let index = 0; index < results.length; index++) {
+//         suggestionHTML += `
+//                 	    <p onclick="renderDetailsOverlay('${results[index].id -1}'), toggleOverlay()">
+//                         ${results[index].name}
+//                         </p>
+//                         `;
+//     }
+//     suggestions.innerHTML = suggestionHTML;
+//     // console.log(results);
+// }
+
+// search pokemon function
 function searchPokemon() {
     let input = document.getElementById('search_pokemon').value.toLowerCase();
+    let suggestions = document.getElementById('suggestions');
 
     if (input.length < 3) {
-        document.getElementById('suggestions').innerHTML = '';
+        suggestions.innerHTML = '';
         return;
     }
 
-    results = pokemonData.filter(pokemon => pokemon.name.toLowerCase().startsWith(input));
+    // Filter and limit to the first 10 hits
+    results = pokemonData
+        .filter(pokemon => pokemon.name.toLowerCase().startsWith(input))
+        .slice(0, 10);
    
-    let suggestions = document.getElementById('suggestions');
     suggestions.innerHTML = '';
 
     let suggestionHTML = '';
-    for (let index = 0; index < results.length; index++) {
+    for (let i = 0; i < results.length; i++) {
+        // We find the index in the original pokemonData array to pass the correct ID to the overlay
+        let pokemonIndex = pokemonData.findIndex(p => p.id === results[i].id);
+        
         suggestionHTML += `
-                	    <p onclick="renderDetailsOverlay('${results[index].id -1}'), toggleOverlay()">
-                        ${results[index].name}
-                        </p>
-                        `;
+            <p onclick="handleSearchSelection(${pokemonIndex})">
+                ${results[i].name}
+            </p>
+        `;
     }
     suggestions.innerHTML = suggestionHTML;
-    // console.log(results);
+}
+
+// Improved selection logic to clean up the UI
+function handleSearchSelection(index) {
+    renderDetailsOverlay(index); // from script.js
+    toggleOverlay();             // from assets.js
+    
+    // Clear the search bar and suggestions after clicking
+    document.getElementById('suggestions').innerHTML = '';
+    document.getElementById('search_pokemon').value = '';
+}
+
+// Event listener to close the dropdown if you click anywhere else on the page
+window.onclick = function(event) {
+    if (!event.target.matches('#search_pokemon')) {
+        document.getElementById('suggestions').innerHTML = '';
+    }
 }
 
 function selectPokemon(name) {

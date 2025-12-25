@@ -22,14 +22,33 @@
 }
 
 #search_pokemon {
-    position: relative;
+    /* position: relative;
     margin-right: 32px;
-    border-radius: 8px;
+    border-radius: 8px; */
+
+    width: 250px;
+    padding: 8px 12px;
+    margin-right: 30px;
+    border-radius: 20px;
+    border: 1px solid #ccc;
+    outline: none;
 }
 
 #suggestions {
+    /* position: absolute;
+    z-index: 1; */
+
     position: absolute;
-    z-index: 1;
+    top: 32px; /* Places it right under the search input */
+    right: 39px;
+    width: 250px;
+    background-color: white;
+    border: 1px solid #ccc;
+    border-radius: 0 0 12px 12px;
+    z-index: 1000; /* Keeps it above the pokemon cards */
+    box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+    max-height: 400px;
+    overflow-y: auto;
 }
 
 #show_more_btn {
@@ -77,7 +96,7 @@
     flex-direction: column;
     background-color: rgb(17, 17, 17);
     position: absolute;
-    top: calc(30% - (360px / 2));
+    top: calc(30% - (256px / 2));
     left: calc(50% - (460px / 2));
     z-index: 2;
     border-radius: 16px;
