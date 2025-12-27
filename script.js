@@ -2,11 +2,7 @@
 async function init() {
     showLoadingSpinner();
     await fetchAllPokemon();
-    // renderPokePowers();
-
-    // if (counter = 24) {
-    //     getShowMoreBtnTemplate();
-    // }
+    setupSearchListeners(); // Initialize the search listeners
 }
 
 // global variables and array's 
@@ -15,6 +11,9 @@ let counter = 0;
 let pokemonData = []; // Array to store Pokémon data fetched from the api
 
 let results = []; // array to store results for autocomplete function
+
+// Add this global variable at the top of script.js
+let currentFocus = -1;
 
 // render functions
 function renderPokemonCards(pokemonArray) {
@@ -63,39 +62,49 @@ function renderDynamicBackground(pokemon) {
     return `style="${backgroundStyle}"`;
 }
 
-// search pokemon function
-// function searchPokemon() {
-//     let input = document.getElementById('search_pokemon').value.toLowerCase();
+function setupSearchListeners() {
+    const searchInput = document.getElementById('search_pokemon');
+    if (!searchInput) return;
 
-//     if (input.length < 3) {
-//         document.getElementById('suggestions').innerHTML = '';
-//         return;
-//     }
+    searchInput.addEventListener('input', () => {
+        searchPokemon(); // Re-renders the list when you type
+    });
 
-//     results = pokemonData.filter(pokemon => pokemon.name.toLowerCase().startsWith(input));
-   
-//     let suggestions = document.getElementById('suggestions');
-//     suggestions.innerHTML = '';
+    searchInput.addEventListener('keydown', (e) => {
+        if (e.repeat) return; // Only process initial press.
 
-//     let suggestionHTML = '';
-//     for (let index = 0; index < results.length; index++) {
-//         suggestionHTML += `
-//                 	    <p onclick="renderDetailsOverlay('${results[index].id -1}'), toggleOverlay()">
-//                         ${results[index].name}
-//                         </p>
-//                         `;
-//     }
-//     suggestions.innerHTML = suggestionHTML;
-//     // console.log(results);
-// }
+        const list = document.getElementById('suggestions');
+        const items = list ? list.querySelectorAll('.suggestion-item') : []; // Use class to select
 
-// search pokemon function
+        if (e.key === 'ArrowDown') {
+            e.preventDefault();
+            currentFocus++;
+            addActive(items, searchInput);
+            searchInput.focus(); // Ensure input keeps focus.
+        } else if (e.key === 'ArrowUp') {
+            e.preventDefault();
+            currentFocus--;
+            addActive(items, searchInput);
+            searchInput.focus(); // Ensure input keeps focus.
+        } else if (e.key === 'Enter') {
+            e.preventDefault();
+            if (currentFocus > -1 && items[currentFocus]) {
+                // Replace input with full selected name on Enter (selection).
+                searchInput.value = items[currentFocus].innerText;
+                addActive(items, searchInput); // Added: Re-highlight briefly for visual consistency during selection.
+                items[currentFocus].click(); // Simulate click to select
+            }
+        }
+    });
+}
+
 function searchPokemon() {
     let input = document.getElementById('search_pokemon').value.toLowerCase();
     let suggestions = document.getElementById('suggestions');
 
     if (input.length < 3) {
         suggestions.innerHTML = '';
+        currentFocus = -1; // Reset focus
         return;
     }
 
@@ -105,37 +114,67 @@ function searchPokemon() {
         .slice(0, 10);
    
     suggestions.innerHTML = '';
+    currentFocus = -1; // Reset focus whenever the list updates
 
-    let suggestionHTML = '';
-    for (let i = 0; i < results.length; i++) {
-        // We find the index in the original pokemonData array to pass the correct ID to the overlay
-        let pokemonIndex = pokemonData.findIndex(p => p.id === results[i].id);
+    results.forEach((pokemon, i) => {
+        // Find the index in the original pokemonData array
+        let pokemonIndex = pokemonData.findIndex(p => p.id === pokemon.id);
         
-        suggestionHTML += `
-            <p onclick="handleSearchSelection(${pokemonIndex})">
-                ${results[i].name}
-            </p>
-        `;
-    }
-    suggestions.innerHTML = suggestionHTML;
+        const p = document.createElement('p');
+        p.className = 'suggestion-item'; // Add class for easy selection
+        p.innerText = pokemon.name; // Use innerText for safety
+        p.setAttribute('role', 'option'); // Accessibility: mark as option
+        
+        p.onclick = () => {
+            handleSearchSelection(pokemonIndex);
+        };
+        suggestions.appendChild(p);
+    });
+
+    // Accessibility: mark suggestions as listbox
+    suggestions.setAttribute('role', 'listbox');
 }
 
-// Improved selection logic to clean up the UI
+function addActive(items, searchInput) {
+    if (!items || items.length === 0) return;
+    removeActive(items);
+    
+    // Loop navigation
+    if (currentFocus >= items.length) currentFocus = 0;
+    if (currentFocus < 0) currentFocus = items.length - 1;
+    
+    items[currentFocus].classList.add("suggestion-active");
+    items[currentFocus].scrollIntoView({ block: "nearest", behavior: "smooth" });
+}
+
+function removeActive(items) {
+    for (let item of items) {
+        item.classList.remove("suggestion-active");
+    }
+}
+
 function handleSearchSelection(index) {
+    // Added: Replace input with full selected Pokémon name on selection.
+    // This ensures it's set for both keyboard and mouse selections.
+    document.getElementById('search_pokemon').value = pokemonData[index].name;
+
     renderDetailsOverlay(index); // from script.js
     toggleOverlay();             // from assets.js
     
-    // Clear the search bar and suggestions after clicking
+    // Clear suggestions after selection
     document.getElementById('suggestions').innerHTML = '';
-    document.getElementById('search_pokemon').value = '';
+    currentFocus = -1; // Reset focus
 }
 
-// Event listener to close the dropdown if you click anywhere else on the page
-window.onclick = function(event) {
-    if (!event.target.matches('#search_pokemon')) {
-        document.getElementById('suggestions').innerHTML = '';
+
+window.addEventListener('click', function(e) {
+    const searchInput = document.getElementById('search_pokemon');
+    const suggestions = document.getElementById('suggestions');
+    if (!searchInput.contains(e.target) && !suggestions.contains(e.target)) {
+        suggestions.innerHTML = '';
+        currentFocus = -1; // Reset focus
     }
-}
+});
 
 function selectPokemon(name) {
     document.getElementById('search_pokemon').value = name;

@@ -30,7 +30,7 @@
     padding: 8px 12px;
     margin-right: 30px;
     border-radius: 20px;
-    border: 1px solid #ccc;
+    border: 4px inset #ccc;
     outline: none;
 }
 
@@ -39,14 +39,14 @@
     z-index: 1; */
 
     position: absolute;
-    top: 32px; /* Places it right under the search input */
-    right: 39px;
+    top: 37px; /* Places it right under the search input */
+    right: 42px;
     width: 250px;
     background-color: white;
-    border: 1px solid #ccc;
+    border: 2px inset #ccc;
     border-radius: 0 0 12px 12px;
     z-index: 1000; /* Keeps it above the pokemon cards */
-    box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+    box-shadow: 8px 11px 6px rgba(0,0,0,0.2);
     max-height: 400px;
     overflow-y: auto;
 }
@@ -309,6 +309,7 @@
 .btn_left:hover {
     transform: scale(0.95);
     border-style: inset;
+    cursor: pointer;
 }
 
 .btn_right {
@@ -343,4 +344,5 @@
 .btn_right:hover {
     transform: scale(0.95);
     border-style: inset;
+    cursor: pointer;
 }

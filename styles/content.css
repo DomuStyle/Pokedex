@@ -16,42 +16,41 @@ nav {
     align-items: center;
 }
 
-#suggestions p {
-    background-color: white;
-    overflow-y: auto;
-    padding: 0;
-    margin: 0;
-    max-width: 180px;
-    z-index: 1000;
-
-    /* margin: 0;
-    padding: 12px;
-    cursor: pointer;
-    font-family: Arial, sans-serif;
-    border-bottom: 1px solid #eee;
-    transition: background 0.2s;
-    color: #333; */
-}
-
 #suggestions p:hover {
     background-color: #f0f0f0;
     color: #000;
     cursor: pointer;
 }
 
-/* #suggestions p:last-child {
-    border-bottom: none;
+.suggestion-item {
+    margin: 0;
+    padding: 12px;
+    cursor: pointer;
+    font-family: Arial, sans-serif;
+    border-bottom: 1px solid #eee;
+    transition: background 0.2s;
+    color: #333;
+}
+
+.suggestion-item:hover {
+    background-color: #f0f0f0;
+    color: #000;
+}
+
+.suggestion-item.suggestion-active {
+    background-color: #ddd !important; /* Highlight color - override hover if needed */
+    color: #000;
 }
 
 #suggestions:empty {
     display: none;
-} */
+}
 
 .pokemon_card {
     /* height: 256px; */
     width: 200px;
     background-color: rgba(250, 250, 250, 0.9);
-    margin: 8px 16px;
+    /* margin: 8px 16px; */
     border-radius: 8px;
     border: 2px solid rgb(78 78 78);
     filter: drop-shadow(6px 6px 3px black);
