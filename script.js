@@ -108,9 +108,9 @@ function searchPokemon() {
         return;
     }
 
-    // Filter and limit to the first 10 hits
+    // Filter and limit to the first 10 hits (guard against null/undefined in pokemonData)
     results = pokemonData
-        .filter(pokemon => pokemon.name.toLowerCase().startsWith(input))
+        .filter(pokemon => pokemon && pokemon.name && pokemon.name.toLowerCase().startsWith(input)) // Added guard: Skip invalid entries to prevent errors
         .slice(0, 10);
    
     suggestions.innerHTML = '';
@@ -118,7 +118,7 @@ function searchPokemon() {
 
     results.forEach((pokemon, i) => {
         // Find the index in the original pokemonData array
-        let pokemonIndex = pokemonData.findIndex(p => p.id === pokemon.id);
+        let pokemonIndex = pokemonData.findIndex(p => p && p.id === pokemon.id); // Added guard: Skip invalid
         
         const p = document.createElement('p');
         p.className = 'suggestion-item'; // Add class for easy selection
@@ -183,4 +183,4 @@ function selectPokemon(name) {
 }
 
 // log stored array for development | delete if app finished!
-// console.log(pokemonData);
+console.log(pokemonData);
