@@ -96,7 +96,7 @@
     flex-direction: column;
     background-color: rgb(17, 17, 17);
     position: absolute;
-    top: calc(30% - (256px / 2));
+    top: calc(30% - (210px / 2));
     left: calc(50% - (460px / 2));
     z-index: 2;
     border-radius: 16px;
@@ -238,8 +238,8 @@
     height: 256px;
     z-index: 4;
     position: absolute;
-    top: 15%;
-    left: 25%;
+    top: 20%;
+    left: 22%;
 }
 
 .overlay_body {
@@ -257,7 +257,7 @@
     width: 418px;
     padding: 12px 8px;
     border-radius: 12px;
-    border: 3px inset black;
+    border: 4px inset black;
 }
 
 .overlay_body_text {

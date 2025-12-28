@@ -1,4 +1,9 @@
 @media  (max-width: 640px) {
+    
+    .header_section {
+        flex-direction: column;
+    }
+
     .detail_card_border {
         position: fixed;
         top: 20%;
@@ -14,7 +19,7 @@
 
     .overlay_img {
         height: 240px;
-        top: 10%;
+        top: 14%;
         left: 14%;
     }
 
@@ -39,14 +44,6 @@
 }
 
 @media  (max-width: 600px) {
-
-    header {
-        height: 143px;
-    }
-
-    .header_section {
-        flex-direction: column;
-    }
 
     #search_pokemon {
         margin: 0;
@@ -195,6 +192,11 @@
         width: 265px;
     }
 
+    .overlay_battlepoints {
+        font-size: 22px;
+        margin-right: 20px;
+    }
+
     .navigation_buttons {
         left: 46px;
     }
@@ -248,7 +250,7 @@
 
     .overlay_img {
         height: 212px;
-        top: 21%;
+        top: 30%;
         left: 8%;
     }
 
@@ -260,19 +262,21 @@
 @media  (max-width: 360px) {
 
     .detail_card_border {
-        height: 544px;
-        width: 280px;
+        height: 600px;
+        width: 250px;
+        left: 4%;
     }
 
     .details_card_display {
-        height: 290px;
-        width: 254px;
+        height: 350px;
+        width: 226px;
     }
 
     .overlay_body {
         font-size: 18px;
         height: 170px;
-        width: 235px;
+        width: 204px;
+        margin-top: 56px;
     }
 
     .overlay_header {
@@ -284,11 +288,13 @@
     }
 
     .overlay_img {
-        left: 3%;
+        left: 5%;
+        top: 38%;
     }
 
     .navigation_buttons {
-        left: 32px;
+        left: 13px;
+        width: 100%;
     }
 }
 

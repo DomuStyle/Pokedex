@@ -19,7 +19,7 @@ body {
 } */
 
 header {
-    height: 128px;
+    height: 160px;
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -160,7 +160,7 @@ h2 {
 }
 
 .rainbow_border_header {
-    height: 4px;
+    height: 6px;
     width: 100%;
     border-top: 2px solid black;
     margin-bottom: 8px;
