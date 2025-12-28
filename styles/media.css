@@ -53,6 +53,11 @@
         margin-bottom: 8px;
     }
 
+    #suggestions {
+        top: 37px;
+        right: 14px;
+    }
+
     .header_title {
         margin: 16px;
     }
@@ -148,3 +153,122 @@
         left: 83px;
     }
 }
+
+@media  (max-width: 470px) {
+
+    .detail_card_border {
+        height: 544px;
+        width: 350px;
+    }
+
+    .details_card_display {
+        height: 290px;
+        width: 320px;
+    }
+
+    .overlay_body {
+        height: 170px;
+        width: 300px;
+    }
+
+    .navigation_buttons {
+        top: 210px;
+        left: 65px;
+    }
+}
+
+@media  (max-width: 430px) {
+
+    .detail_card_border {
+        height: 544px;
+        width: 310px;
+    }
+
+    .details_card_display {
+        height: 290px;
+        width: 285px;
+    }
+
+    .overlay_body {
+        font-size: 18px;
+        height: 170px;
+        width: 265px;
+    }
+
+    .navigation_buttons {
+        left: 46px;
+    }
+}
+
+@media  (max-width: 390px) {
+
+    .detail_card_border {
+        height: 544px;
+        width: 280px;
+    }
+
+    .details_card_display {
+        height: 290px;
+        width: 254px;
+    }
+
+    .overlay_body {
+        font-size: 18px;
+        height: 170px;
+        width: 235px;
+    }
+
+    .overlay_header {
+        flex-direction: column;
+    }
+
+    .overlay_battlepoints {
+        font-size: 20px;
+    }
+
+    .overlay_img {
+        height: 212px;
+        top: 14%;
+        left: 8%;
+    }
+
+    .navigation_buttons {
+        left: 32px;
+    }
+}
+
+@media  (max-width: 360px) {
+
+    .detail_card_border {
+        height: 544px;
+        width: 280px;
+    }
+
+    .details_card_display {
+        height: 290px;
+        width: 254px;
+    }
+
+    .overlay_body {
+        font-size: 18px;
+        height: 170px;
+        width: 235px;
+    }
+
+    .overlay_header {
+        flex-direction: column;
+    }
+
+    .overlay_battlepoints {
+        font-size: 20px;
+    }
+
+    .overlay_img {
+        left: 3%;
+    }
+
+    .navigation_buttons {
+        left: 32px;
+    }
+}
+
