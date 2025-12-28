@@ -18,11 +18,11 @@
         left: 14%;
     }
 
-    .overlay_header2 {
+    /* .overlay_header2 {
         height: 55px;
         top: 6px;
         right: 5px;
-    }
+    } */
 
     .overlay_body {
         font-size: 20px;
@@ -94,11 +94,11 @@
         left: 14%;
     }
 
-    .overlay_header2 {
+    /* .overlay_header2 {
         height: 55px;
         top: 6px;
         right: 5px;
-    }
+    } */
 
     .overlay_body {
         font-size: 20px;
@@ -134,11 +134,11 @@
         left: 14%;
     }
 
-    .overlay_header2 {
+    /* .overlay_header2 {
         height: 55px;
         top: 6px;
         right: 5px;
-    }
+    } */
 
     .overlay_body {
         font-size: 20px;
@@ -203,12 +203,12 @@
 @media  (max-width: 390px) {
 
     .detail_card_border {
-        height: 544px;
+        height: 560px;
         width: 280px;
     }
 
     .details_card_display {
-        height: 290px;
+        height: 312px;
         width: 254px;
     }
 
@@ -216,10 +216,30 @@
         font-size: 18px;
         height: 170px;
         width: 235px;
+        margin-top: 16px;
     }
 
     .overlay_header {
+        justify-content: flex-start;
         flex-direction: column;
+        height: 100px;
+    }
+
+    .overlay_header1 {
+        width: 75%;
+        margin-left: 8px;
+    }
+
+    .overlay_header2 {
+        border-radius: 12px 8px 50px 12px;
+        justify-content: flex-start;
+        width: 60%;
+        margin-bottom: 10px;
+        margin-left: 8px;
+    }
+
+    .overlay_header2 p {
+        margin-left: 8px;
     }
 
     .overlay_battlepoints {
@@ -228,7 +248,7 @@
 
     .overlay_img {
         height: 212px;
-        top: 14%;
+        top: 21%;
         left: 8%;
     }
 
