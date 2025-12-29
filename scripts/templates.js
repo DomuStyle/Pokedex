@@ -13,7 +13,7 @@ function getPokemonCardsTemplate(pokemon, index) {
     let dynamicBackground = renderDynamicBackground(pokemon);
     
     return `
-    <div class="pokemon_card_container">
+    <div class="pokemon_card_container" title="Click me for details">
         <div class="pokemon_card" onClick="renderDetailsOverlay(${index}), toggleOverlay()">
             <div class="header_bg">
                 <div class="card_header">
