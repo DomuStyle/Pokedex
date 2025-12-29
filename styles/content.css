@@ -22,8 +22,7 @@
     width: 32px;
     margin: 0;
     padding: 0;
-    /* background-image: url('./../assets/poketypes/bug.svg'); */
-    background-color: #5f5f5f;
+    background-color: rgb(168, 184, 32);
 }
 
 .header_btn_bug img {
@@ -39,13 +38,11 @@
 
 .header_btn_dark {
     border: 2px outset black;
-    /* border-radius: 16px 0 0 0; */
     height: 100%;
     width: 32px;
     margin: 0;
     padding: 0;
-    /* background-image: url('./../assets/poketypes/bug.svg'); */
-    background-color: #5f5f5f;
+    background-color: rgb(112, 88, 72);
 }
 
 .header_btn_dark img {
@@ -61,13 +58,11 @@
 
 .header_btn_dragon {
     border: 2px outset black;
-    /* border-radius: 16px 0 0 0; */
     height: 100%;
     width: 32px;
     margin: 0;
     padding: 0;
-    /* background-image: url('./../assets/poketypes/bug.svg'); */
-    background-color: #5f5f5f;
+    background-color: rgb(112, 56, 248);
 }
 
 .header_btn_dragon img {
@@ -83,13 +78,11 @@
 
 .header_btn_electric {
     border: 2px outset black;
-    /* border-radius: 16px 0 0 0; */
     height: 100%;
     width: 32px;
     margin: 0;
     padding: 0;
-    /* background-image: url('./../assets/poketypes/bug.svg'); */
-    background-color: #5f5f5f;
+    background-color: rgb(248, 208, 48);
 }
 
 .header_btn_electric img {
@@ -105,13 +98,11 @@
 
 .header_btn_fairy {
     border: 2px outset black;
-    /* border-radius: 16px 0 0 0; */
     height: 100%;
     width: 32px;
     margin: 0;
     padding: 0;
-    /* background-image: url('./../assets/poketypes/bug.svg'); */
-    background-color: #5f5f5f;
+    background-color: rgb(238, 153, 172);
 }
 
 .header_btn_fairy img {
@@ -127,13 +118,11 @@
 
 .header_btn_fighting {
     border: 2px outset black;
-    /* border-radius: 16px 0 0 0; */
     height: 100%;
     width: 32px;
     margin: 0;
     padding: 0;
-    /* background-image: url('./../assets/poketypes/bug.svg'); */
-    background-color: #5f5f5f;
+    background-color: rgb(192, 48, 40);
 }
 
 .header_btn_fighting img {
@@ -149,13 +138,11 @@
 
 .header_btn_fire {
     border: 2px outset black;
-    /* border-radius: 16px 0 0 0; */
     height: 100%;
     width: 32px;
     margin: 0;
     padding: 0;
-    /* background-image: url('./../assets/poketypes/bug.svg'); */
-    background-color: #5f5f5f;
+    background-color: rgb(240, 128, 48);
 }
 
 .header_btn_fire img {
@@ -171,13 +158,11 @@
 
 .header_btn_flying {
     border: 2px outset black;
-    /* border-radius: 16px 0 0 0; */
     height: 100%;
     width: 32px;
     margin: 0;
     padding: 0;
-    /* background-image: url('./../assets/poketypes/bug.svg'); */
-    background-color: #5f5f5f;
+    background-color: rgb(168, 144, 240);
 }
 
 .header_btn_flying img {
@@ -198,8 +183,7 @@
     width: 32px;
     margin: 0;
     padding: 0;
-    /* background-image: url('./../assets/poketypes/bug.svg'); */
-    background-color: #5f5f5f;
+    background-color: rgb(112, 88, 152);
 }
 
 .header_btn_ghost img {
@@ -220,8 +204,7 @@
     width: 32px;
     margin: 0;
     padding: 0;
-    /* background-image: url('./../assets/poketypes/bug.svg'); */
-    background-color: #5f5f5f;
+    background-color: rgb(120, 200, 80);
 }
 
 .header_btn_grass img {
@@ -237,13 +220,11 @@
 
 .header_btn_ground {
     border: 2px outset black;
-    /* border-radius: 0 0 0 16px; */
     height: 100%;
     width: 32px;
     margin: 0;
     padding: 0;
-    /* background-image: url('./../assets/poketypes/bug.svg'); */
-    background-color: #5f5f5f;
+    background-color: rgb(224, 192, 104);
 }
 
 .header_btn_ground img {
@@ -259,13 +240,11 @@
 
 .header_btn_ice {
     border: 2px outset black;
-    /* border-radius: 0 0 0 16px; */
     height: 100%;
     width: 32px;
     margin: 0;
     padding: 0;
-    /* background-image: url('./../assets/poketypes/bug.svg'); */
-    background-color: #5f5f5f;
+    background-color: rgb(152, 216, 216);
 }
 
 .header_btn_ice img {
@@ -281,13 +260,11 @@
 
 .header_btn_normal {
     border: 2px outset black;
-    /* border-radius: 0 0 0 16px; */
     height: 100%;
     width: 32px;
     margin: 0;
     padding: 0;
-    /* background-image: url('./../assets/poketypes/bug.svg'); */
-    background-color: #5f5f5f;
+    background-color: rgb(168, 168, 120);
 }
 
 .header_btn_normal img {
@@ -303,13 +280,11 @@
 
 .header_btn_poison {
     border: 2px outset black;
-    /* border-radius: 0 0 0 16px; */
     height: 100%;
     width: 32px;
     margin: 0;
     padding: 0;
-    /* background-image: url('./../assets/poketypes/bug.svg'); */
-    background-color: #5f5f5f;
+    background-color: rgb(160, 64, 160);
 }
 
 .header_btn_poison img {
@@ -325,13 +300,11 @@
 
 .header_btn_psychic {
     border: 2px outset black;
-    /* border-radius: 0 0 0 16px; */
     height: 100%;
     width: 32px;
     margin: 0;
     padding: 0;
-    /* background-image: url('./../assets/poketypes/bug.svg'); */
-    background-color: #5f5f5f;
+    background-color: rgb(248, 88, 136);
 }
 
 .header_btn_psychic img {
@@ -347,13 +320,11 @@
 
 .header_btn_rock {
     border: 2px outset black;
-    /* border-radius: 0 0 0 16px; */
     height: 100%;
     width: 32px;
     margin: 0;
     padding: 0;
-    /* background-image: url('./../assets/poketypes/bug.svg'); */
-    background-color: #5f5f5f;
+    background-color: rgb(184, 160, 56);
 }
 
 .header_btn_rock img {
@@ -369,13 +340,11 @@
 
 .header_btn_steel {
     border: 2px outset black;
-    /* border-radius: 0 0 0 16px; */
     height: 100%;
     width: 32px;
     margin: 0;
     padding: 0;
-    /* background-image: url('./../assets/poketypes/bug.svg'); */
-    background-color: #5f5f5f;
+    background-color: rgb(184, 184, 208);
 }
 
 .header_btn_steel img {
@@ -396,8 +365,7 @@
     width: 32px;
     margin: 0;
     padding: 0;
-    /* background-image: url('./../assets/poketypes/bug.svg'); */
-    background-color: #5f5f5f;
+    background-color: rgb(104, 144, 240);
 }
 
 .header_btn_water img {
