@@ -9,6 +9,437 @@
     width: 100%;
 }
 
+.header_btn_left {
+    border: 2px outset black;
+    height: 100%;
+    border-radius: 50px 0 0 50px;
+}
+
+.header_btn_bug {
+    border: 2px outset black;
+    border-radius: 14px 0 0 0;
+    height: 100%;
+    width: 32px;
+    margin: 0;
+    padding: 0;
+    /* background-image: url('./../assets/poketypes/bug.svg'); */
+    background-color: #5f5f5f;
+}
+
+.header_btn_bug img {
+    height: 20px;
+    width: 20px;
+    margin: 6px;
+}
+
+.header_btn_bug:hover {
+    cursor: pointer;
+    transform: scale(0.95);
+}
+
+.header_btn_dark {
+    border: 2px outset black;
+    /* border-radius: 16px 0 0 0; */
+    height: 100%;
+    width: 32px;
+    margin: 0;
+    padding: 0;
+    /* background-image: url('./../assets/poketypes/bug.svg'); */
+    background-color: #5f5f5f;
+}
+
+.header_btn_dark img {
+    height: 20px;
+    width: 20px;
+    margin: 6px;
+}
+
+.header_btn_dark:hover {
+    cursor: pointer;
+    transform: scale(0.95);
+}
+
+.header_btn_dragon {
+    border: 2px outset black;
+    /* border-radius: 16px 0 0 0; */
+    height: 100%;
+    width: 32px;
+    margin: 0;
+    padding: 0;
+    /* background-image: url('./../assets/poketypes/bug.svg'); */
+    background-color: #5f5f5f;
+}
+
+.header_btn_dragon img {
+    height: 20px;
+    width: 20px;
+    margin: 6px;
+}
+
+.header_btn_dragon:hover {
+    cursor: pointer;
+    transform: scale(0.95);
+}
+
+.header_btn_electric {
+    border: 2px outset black;
+    /* border-radius: 16px 0 0 0; */
+    height: 100%;
+    width: 32px;
+    margin: 0;
+    padding: 0;
+    /* background-image: url('./../assets/poketypes/bug.svg'); */
+    background-color: #5f5f5f;
+}
+
+.header_btn_electric img {
+    height: 20px;
+    width: 20px;
+    margin: 6px;
+}
+
+.header_btn_electric:hover {
+    cursor: pointer;
+    transform: scale(0.95);
+}
+
+.header_btn_fairy {
+    border: 2px outset black;
+    /* border-radius: 16px 0 0 0; */
+    height: 100%;
+    width: 32px;
+    margin: 0;
+    padding: 0;
+    /* background-image: url('./../assets/poketypes/bug.svg'); */
+    background-color: #5f5f5f;
+}
+
+.header_btn_fairy img {
+    height: 20px;
+    width: 20px;
+    margin: 6px;
+}
+
+.header_btn_fairy:hover {
+    cursor: pointer;
+    transform: scale(0.95);
+}
+
+.header_btn_fighting {
+    border: 2px outset black;
+    /* border-radius: 16px 0 0 0; */
+    height: 100%;
+    width: 32px;
+    margin: 0;
+    padding: 0;
+    /* background-image: url('./../assets/poketypes/bug.svg'); */
+    background-color: #5f5f5f;
+}
+
+.header_btn_fighting img {
+    height: 20px;
+    width: 20px;
+    margin: 6px;
+}
+
+.header_btn_fighting:hover {
+    cursor: pointer;
+    transform: scale(0.95);
+}
+
+.header_btn_fire {
+    border: 2px outset black;
+    /* border-radius: 16px 0 0 0; */
+    height: 100%;
+    width: 32px;
+    margin: 0;
+    padding: 0;
+    /* background-image: url('./../assets/poketypes/bug.svg'); */
+    background-color: #5f5f5f;
+}
+
+.header_btn_fire img {
+    height: 20px;
+    width: 20px;
+    margin: 6px;
+}
+
+.header_btn_fire:hover {
+    cursor: pointer;
+    transform: scale(0.95);
+}
+
+.header_btn_flying {
+    border: 2px outset black;
+    /* border-radius: 16px 0 0 0; */
+    height: 100%;
+    width: 32px;
+    margin: 0;
+    padding: 0;
+    /* background-image: url('./../assets/poketypes/bug.svg'); */
+    background-color: #5f5f5f;
+}
+
+.header_btn_flying img {
+    height: 20px;
+    width: 20px;
+    margin: 6px;
+}
+
+.header_btn_flying:hover {
+    cursor: pointer;
+    transform: scale(0.95);
+}
+
+.header_btn_ghost {
+    border: 2px outset black;
+    border-radius: 0 14px 0 0 ;
+    height: 100%;
+    width: 32px;
+    margin: 0;
+    padding: 0;
+    /* background-image: url('./../assets/poketypes/bug.svg'); */
+    background-color: #5f5f5f;
+}
+
+.header_btn_ghost img {
+    height: 20px;
+    width: 20px;
+    margin: 6px;
+}
+
+.header_btn_ghost:hover {
+    cursor: pointer;
+    transform: scale(0.95);
+}
+
+.header_btn_grass {
+    border: 2px outset black;
+    border-radius: 0 0 0 14px;
+    height: 100%;
+    width: 32px;
+    margin: 0;
+    padding: 0;
+    /* background-image: url('./../assets/poketypes/bug.svg'); */
+    background-color: #5f5f5f;
+}
+
+.header_btn_grass img {
+    height: 20px;
+    width: 20px;
+    margin: 6px;
+}
+
+.header_btn_grass:hover {
+    cursor: pointer;
+    transform: scale(0.95);
+}
+
+.header_btn_ground {
+    border: 2px outset black;
+    /* border-radius: 0 0 0 16px; */
+    height: 100%;
+    width: 32px;
+    margin: 0;
+    padding: 0;
+    /* background-image: url('./../assets/poketypes/bug.svg'); */
+    background-color: #5f5f5f;
+}
+
+.header_btn_ground img {
+    height: 20px;
+    width: 20px;
+    margin: 6px;
+}
+
+.header_btn_ground:hover {
+    cursor: pointer;
+    transform: scale(0.95);
+}
+
+.header_btn_ice {
+    border: 2px outset black;
+    /* border-radius: 0 0 0 16px; */
+    height: 100%;
+    width: 32px;
+    margin: 0;
+    padding: 0;
+    /* background-image: url('./../assets/poketypes/bug.svg'); */
+    background-color: #5f5f5f;
+}
+
+.header_btn_ice img {
+    height: 20px;
+    width: 20px;
+    margin: 6px;
+}
+
+.header_btn_ice:hover {
+    cursor: pointer;
+    transform: scale(0.95);
+}
+
+.header_btn_normal {
+    border: 2px outset black;
+    /* border-radius: 0 0 0 16px; */
+    height: 100%;
+    width: 32px;
+    margin: 0;
+    padding: 0;
+    /* background-image: url('./../assets/poketypes/bug.svg'); */
+    background-color: #5f5f5f;
+}
+
+.header_btn_normal img {
+    height: 20px;
+    width: 20px;
+    margin: 6px;
+}
+
+.header_btn_normal:hover {
+    cursor: pointer;
+    transform: scale(0.95);
+}
+
+.header_btn_poison {
+    border: 2px outset black;
+    /* border-radius: 0 0 0 16px; */
+    height: 100%;
+    width: 32px;
+    margin: 0;
+    padding: 0;
+    /* background-image: url('./../assets/poketypes/bug.svg'); */
+    background-color: #5f5f5f;
+}
+
+.header_btn_poison img {
+    height: 20px;
+    width: 20px;
+    margin: 6px;
+}
+
+.header_btn_poison:hover {
+    cursor: pointer;
+    transform: scale(0.95);
+}
+
+.header_btn_psychic {
+    border: 2px outset black;
+    /* border-radius: 0 0 0 16px; */
+    height: 100%;
+    width: 32px;
+    margin: 0;
+    padding: 0;
+    /* background-image: url('./../assets/poketypes/bug.svg'); */
+    background-color: #5f5f5f;
+}
+
+.header_btn_psychic img {
+    height: 20px;
+    width: 20px;
+    margin: 6px;
+}
+
+.header_btn_psychic:hover {
+    cursor: pointer;
+    transform: scale(0.95);
+}
+
+.header_btn_rock {
+    border: 2px outset black;
+    /* border-radius: 0 0 0 16px; */
+    height: 100%;
+    width: 32px;
+    margin: 0;
+    padding: 0;
+    /* background-image: url('./../assets/poketypes/bug.svg'); */
+    background-color: #5f5f5f;
+}
+
+.header_btn_rock img {
+    height: 20px;
+    width: 20px;
+    margin: 6px;
+}
+
+.header_btn_rock:hover {
+    cursor: pointer;
+    transform: scale(0.95);
+}
+
+.header_btn_steel {
+    border: 2px outset black;
+    /* border-radius: 0 0 0 16px; */
+    height: 100%;
+    width: 32px;
+    margin: 0;
+    padding: 0;
+    /* background-image: url('./../assets/poketypes/bug.svg'); */
+    background-color: #5f5f5f;
+}
+
+.header_btn_steel img {
+    height: 20px;
+    width: 20px;
+    margin: 6px;
+}
+
+.header_btn_steel:hover {
+    cursor: pointer;
+    transform: scale(0.95);
+}
+
+.header_btn_water {
+    border: 2px outset black;
+    border-radius: 0 0 14px 0;
+    height: 100%;
+    width: 32px;
+    margin: 0;
+    padding: 0;
+    /* background-image: url('./../assets/poketypes/bug.svg'); */
+    background-color: #5f5f5f;
+}
+
+.header_btn_water img {
+    height: 20px;
+    width: 20px;
+    margin: 6px;
+}
+
+.header_btn_water:hover {
+    cursor: pointer;
+    transform: scale(0.95);
+}
+
+
+
+
+.header_btn_water {
+    border: 2px outset black;
+    height: 100%;
+    width: 32px;
+    margin: 0;
+    padding: 0;
+}
+
+.header_btn_left:hover,
+.header_btn_mid:hover,
+.header_btn_right:hover {
+    cursor: pointer;
+    transform: scale(0.95);
+}
+
+.header_btn_mid {
+    border: 2px outset black;
+    height: 100%;
+}
+
+.header_btn_right {
+    border: 2px outset black;
+    height: 100%;
+    border-radius: 50px 0 0 50px;
+}
+
 nav {
     position: relative;
     display: flex;
@@ -52,7 +483,7 @@ nav {
     background-color: rgba(250, 250, 250, 0.9);
     /* margin: 8px 16px; */
     border-radius: 8px;
-    border: 2px solid rgb(78 78 78);
+    border: 3px outset rgb(78 78 78);
     filter: drop-shadow(6px 6px 3px black);
     display: flex;
     flex-direction: column;
@@ -106,7 +537,7 @@ nav {
     display: flex;
     align-items: center;
     justify-content: center;
-    margin: 16px 16px;
+    margin: 16px 16px 8px 16px;
     border-radius: 8px;
     border: 4px inset black;
     width: 80%;
@@ -122,12 +553,12 @@ nav {
 .card_body {
     border: 3px inset black;
     border-radius: 4px 12px 4px 12px;
-    margin: 4px 16px;
+    margin: 8px 16px;
     width: 180px;
     background-image: radial-gradient(white 62%, lightgray);
 }
 .card_body p {
-    margin: 4px 8px;
+    margin: 8px 8px;
 }
 
 
