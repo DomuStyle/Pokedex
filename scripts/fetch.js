@@ -1,4 +1,5 @@
 // fetch data from pokeAPI and store inside pokemonData array
+
 async function fetchAllPokemon() {
     try {
         // Fetch the initial list (keep at 100 for buffer, or reduce to 48 for even faster initial load)
@@ -14,8 +15,11 @@ async function fetchAllPokemon() {
             .filter(p => p !== null); // Filter out any nulls from errors
         pokemonData.push(...initialPokemon); // Spread to add all successful ones
 
+        // NEW: Add to displayedPokemon (since currentType is null initially, add all)
+        displayedPokemon.push(...initialPokemon);
+
         // Render the first batch immediately (will skip any undefined/null)
-        renderPokemonCards(pokemonData);
+        renderPokemonCards(displayedPokemon);
 
         // Fetch remaining in background (parallelize this too, but in batches to avoid overwhelming browser)
         const remainingResponse = await fetch('https://pokeapi.co/api/v2/pokemon?limit=1250&offset=100');
@@ -32,6 +36,14 @@ async function fetchAllPokemon() {
                 .map(result => result.value)
                 .filter(p => p !== null); // Filter out any nulls from errors
             pokemonData.push(...batchPokemon);
+
+            // NEW: Conditionally add to displayedPokemon based on current filter
+            if (currentType === null) {
+                displayedPokemon.push(...batchPokemon);
+            } else {
+                const matching = batchPokemon.filter(p => p && p.types.some(t => t.type.name === currentType));
+                displayedPokemon.push(...matching);
+            }
         }
 
     } catch (error) {

@@ -379,8 +379,77 @@
     transform: scale(0.95);
 }
 
+.header_btn_bug.active {
+    background-color: var(--bug);
+}
 
+.header_btn_dark.active {
+    background-color: var(--dark);
+}
 
+.header_btn_dragon.active {
+    background-color: var(--dragon);
+}
+
+.header_btn_electric.active {
+    background-color: var(--electric);
+}
+
+.header_btn_fairy.active {
+    background-color: var(--fairy);
+}
+
+.header_btn_fighting.active {
+    background-color: var(--fighting);
+}
+
+.header_btn_fire.active {
+    background-color: var(--fire);
+}
+
+.header_btn_flying.active {
+    background-color: var(--flying);
+}
+
+.header_btn_ghost.active {
+    background-color: var(--ghost);
+}
+
+.header_btn_grass.active {
+    background-color: var(--grass);
+}
+
+.header_btn_ground.active {
+    background-color: var(--ground);
+}
+
+.header_btn_ice.active {
+    background-color: var(--ice);
+}
+
+.header_btn_normal.active {
+    background-color: var(--normal);
+}
+
+.header_btn_poison.active {
+    background-color: var(--poison);
+}
+
+.header_btn_psychic.active {
+    background-color: var(--psychic);
+}
+
+.header_btn_rock.active {
+    background-color: var(--rock);
+}
+
+.header_btn_steel.active {
+    background-color: var(--steel);
+}
+
+.header_btn_water.active {
+    background-color: var(--water);
+}
 
 .header_btn_water {
     border: 2px outset black;

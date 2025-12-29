@@ -3,6 +3,7 @@ async function init() {
     showLoadingSpinner();
     await fetchAllPokemon();
     setupSearchListeners(); // Initialize the search listeners
+    setupTypeFilters(); // NEW: Set up type filter button listeners
 }
 
 // global variables and array's 
@@ -12,10 +13,13 @@ let pokemonData = []; // Array to store Pokémon data fetched from the api
 
 let results = []; // array to store results for autocomplete function
 
-// Add this global variable at the top of script.js
-let currentFocus = -1;
+let currentFocus = -1; // stores current focus index for keyboard navigation in search suggestions
 
-// render functions
+let displayedPokemon = []; // array to store currently displayed (filtered) Pokémon
+
+let currentType = null; // stores currently selected type filter
+
+
 function renderPokemonCards(pokemonArray) {
     const contentDiv = document.getElementById('content');
     let html = '';
@@ -25,7 +29,13 @@ function renderPokemonCards(pokemonArray) {
         if (pokemon) { // Check if data was successfully fetched
             
             if (counter < 24) {
-                let cardTemplate = getPokemonCardsTemplate(pokemon, index);
+                // CHANGED: Compute the original index in pokemonData for overlay
+                let originalIndex = pokemonData.indexOf(pokemon);
+                if (originalIndex === -1) {
+                    console.error('Pokémon not found in global data');
+                    continue;
+                }
+                let cardTemplate = getPokemonCardsTemplate(pokemon, originalIndex);
                 let dynamicBacground = renderDynamicBackground(pokemon);
                 let updatedCardTemplate = cardTemplate.replace('class="card_display"', `class="card_display" ${dynamicBacground}`);
                 html += updatedCardTemplate;
@@ -108,8 +118,8 @@ function searchPokemon() {
         return;
     }
 
-    // Filter and limit to the first 10 hits (guard against null/undefined in pokemonData)
-    results = pokemonData
+    // CHANGED: Filter from displayedPokemon (respects current type filter) and limit to the first 10 hits (guard against null/undefined)
+    results = displayedPokemon
         .filter(pokemon => pokemon && pokemon.name && pokemon.name.toLowerCase().startsWith(input)) // Added guard: Skip invalid entries to prevent errors
         .slice(0, 10);
    
@@ -182,5 +192,44 @@ function selectPokemon(name) {
     toggleOverlay(name);
 }
 
+// NEW: Function to set up click listeners on type buttons
+function setupTypeFilters() {
+    const typeButtons = document.querySelectorAll('[class^="header_btn_"]');
+    typeButtons.forEach(btn => {
+        const type = btn.className.replace('header_btn_', '');
+        btn.addEventListener('click', () => applyFilter(type));
+    });
+}
+
+// NEW: Function to apply or toggle a type filter
+function applyFilter(selectedType) {
+    if (currentType === selectedType) {
+        currentType = null; // Toggle off
+    } else {
+        currentType = selectedType; // Set new filter
+    }
+
+    // Recompute displayedPokemon from the full pokemonData
+    if (currentType === null) {
+        displayedPokemon = pokemonData.slice(); // Shallow copy to separate array
+    } else {
+        displayedPokemon = pokemonData.filter(p => p && p.types.some(t => t.type.name === currentType));
+    }
+
+    // Update active class on buttons
+    const typeButtons = document.querySelectorAll('[class^="header_btn_"]');
+    typeButtons.forEach(b => b.classList.remove('active'));
+    if (currentType !== null) {
+        const selectedBtn = document.querySelector(`.header_btn_${currentType}`);
+        if (selectedBtn) selectedBtn.classList.add('active');
+    }
+
+    // Reset and re-render
+    counter = 0;
+    const contentDiv = document.getElementById('content');
+    contentDiv.innerHTML = '';
+    renderPokemonCards(displayedPokemon);
+}
+
 // log stored array for development | delete if app finished!
-console.log(pokemonData);
+// console.log(pokemonData);
