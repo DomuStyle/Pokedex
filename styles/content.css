@@ -541,6 +541,7 @@ nav {
     filter: drop-shadow(4px 4px 2px black);
     height: 32px;
     margin-top: 8px;
+    border: 2px outset black;
     border-radius: 4px 12px 4px 12px;
     width: 180px;
 }
@@ -552,10 +553,10 @@ nav {
 .card_id {
     color: white;
     margin: 4px 0px 4px 12px;
-    background-image: radial-gradient(#e7e7e7, rgba(0, 0, 0, 0.5) 60%);
+    background-image: radial-gradient(#bfbdbd, rgba(0, 0, 0, 0.5) 60%);
     border-radius: 17px;
     padding: 1px 6px 1px 6px;
-    width: 18px;
+    width: auto;
     height: 24px;
     text-align: center;
     border: 1px solid black;

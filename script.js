@@ -20,6 +20,24 @@ let displayedPokemon = []; // array to store currently displayed (filtered) Pok�
 let currentType = null; // stores currently selected type filter
 
 
+// NEW: Helper function to properly capitalize Pokémon names
+function capitalizeName(name) {
+    if (!name) return '';
+    
+    return name
+        .split('-')                    // Split on hyphens: "mr. mime" → ["mr.", "mime"], "ho-oh" → ["ho", "oh"]
+        .map(part => {
+            // Special handling for parts that should stay lowercase (like "oh" in Ho-Oh)
+            if (part === 'oh') return 'Oh';
+            if (part === 'z') return 'Z';  // For Porygon-Z
+            if (part === '2') return '2';  // For Porygon2
+            
+            // Normal case: capitalize first letter
+            return part.charAt(0).toUpperCase() + part.slice(1).toLowerCase();
+        })
+        .join('-');                        // Join back with hyphen
+}
+
 function renderPokemonCards(pokemonArray) {
     const contentDiv = document.getElementById('content');
     let html = '';
@@ -132,7 +150,7 @@ function searchPokemon() {
         
         const p = document.createElement('p');
         p.className = 'suggestion-item'; // Add class for easy selection
-        p.innerText = pokemon.name; // Use innerText for safety
+        p.innerText = capitalizeName(pokemon.name); // Use innerText for safety
         p.setAttribute('role', 'option'); // Accessibility: mark as option
         
         p.onclick = () => {
@@ -166,7 +184,7 @@ function removeActive(items) {
 function handleSearchSelection(index) {
     // Added: Replace input with full selected Pokémon name on selection.
     // This ensures it's set for both keyboard and mouse selections.
-    document.getElementById('search_pokemon').value = pokemonData[index].name;
+    document.getElementById('search_pokemon').value = capitalizeName(pokemonData[index].name);
 
     renderDetailsOverlay(index); // from script.js
     toggleOverlay();             // from assets.js
