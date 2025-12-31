@@ -48,6 +48,11 @@ function toggleOverlay() {
     overlayDiv.classList.toggle('d_none')
 }
 
+// NEW: Toggle function for AI popup
+function toggleAIPopup() {
+    let aiPopupDiv = document.getElementById('ai_popup');
+    aiPopupDiv.classList.toggle('d_none');
+}
 
 function showNextPokemon(index) {
     index = (index + 1) % pokemonData.length;

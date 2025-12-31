@@ -27,7 +27,7 @@
 
 .header_btn_bug img {
     height: 20px;
-    width: 20px;
+    width: 16px;
     margin: 6px;
 }
 
@@ -47,7 +47,7 @@
 
 .header_btn_dark img {
     height: 20px;
-    width: 20px;
+    width: 16px;
     margin: 6px;
 }
 
@@ -67,7 +67,7 @@
 
 .header_btn_dragon img {
     height: 20px;
-    width: 20px;
+    width: 16px;
     margin: 6px;
 }
 
@@ -87,7 +87,7 @@
 
 .header_btn_electric img {
     height: 20px;
-    width: 20px;
+    width: 16px;
     margin: 6px;
 }
 
@@ -107,7 +107,7 @@
 
 .header_btn_fairy img {
     height: 20px;
-    width: 20px;
+    width: 16px;
     margin: 6px;
 }
 
@@ -127,7 +127,7 @@
 
 .header_btn_fighting img {
     height: 20px;
-    width: 20px;
+    width: 16px;
     margin: 6px;
 }
 
@@ -147,7 +147,7 @@
 
 .header_btn_fire img {
     height: 20px;
-    width: 20px;
+    width: 16px;
     margin: 6px;
 }
 
@@ -167,7 +167,7 @@
 
 .header_btn_flying img {
     height: 20px;
-    width: 20px;
+    width: 16px;
     margin: 6px;
 }
 
@@ -188,7 +188,7 @@
 
 .header_btn_ghost img {
     height: 20px;
-    width: 20px;
+    width: 16px;
     margin: 6px;
 }
 
@@ -209,7 +209,7 @@
 
 .header_btn_grass img {
     height: 20px;
-    width: 20px;
+    width: 16px;
     margin: 6px;
 }
 
@@ -229,7 +229,7 @@
 
 .header_btn_ground img {
     height: 20px;
-    width: 20px;
+    width: 16px;
     margin: 6px;
 }
 
@@ -249,7 +249,7 @@
 
 .header_btn_ice img {
     height: 20px;
-    width: 20px;
+    width: 16px;
     margin: 6px;
 }
 
@@ -269,7 +269,7 @@
 
 .header_btn_normal img {
     height: 20px;
-    width: 20px;
+    width: 16px;
     margin: 6px;
 }
 
@@ -289,7 +289,7 @@
 
 .header_btn_poison img {
     height: 20px;
-    width: 20px;
+    width: 16px;
     margin: 6px;
 }
 
@@ -309,7 +309,7 @@
 
 .header_btn_psychic img {
     height: 20px;
-    width: 20px;
+    width: 16px;
     margin: 6px;
 }
 
@@ -329,7 +329,7 @@
 
 .header_btn_rock img {
     height: 20px;
-    width: 20px;
+    width: 16px;
     margin: 6px;
 }
 
@@ -349,7 +349,7 @@
 
 .header_btn_steel img {
     height: 20px;
-    width: 20px;
+    width: 16px;
     margin: 6px;
 }
 
@@ -370,7 +370,7 @@
 
 .header_btn_water img {
     height: 20px;
-    width: 20px;
+    width: 16px;
     margin: 6px;
 }
 
@@ -539,7 +539,7 @@ nav {
     /* background-image: linear-gradient(45deg, rgb(156, 156, 156), rgba(225, 225, 225, 0.9)); */
     background-image: linear-gradient(45deg, rgba(225, 225, 225, 1.9), rgb(192, 178, 182) 61%, rgba(225, 225, 225, 0.9));
     filter: drop-shadow(4px 4px 2px black);
-    height: 32px;
+    height: 38px;
     margin-top: 8px;
     border: 2px outset black;
     border-radius: 4px 12px 4px 12px;

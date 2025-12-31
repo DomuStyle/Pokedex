@@ -1,0 +1,50 @@
+# .gitignore for JavaScript Pokedex Project
+
+# Node.js dependencies (if using NPM)
+node_modules/
+
+# Environment variables and secret files
+.env
+*.env.local
+*.env.development
+*.env.test
+*.env.production
+
+# Sensitive config files (e.g., API keys)
+config.js
+scripts/config.js
+
+# PHP proxy file (sensitive, contains API key)
+proxy.php
+api/proxy.php  # If in a subfolder
+
+# Build/output directories
+dist/
+build/
+
+# Logs and temp files
+*.log
+npm-debug.log
+yarn-debug.log
+yarn-error.log
+tmp/
+temp/
+
+# OS-specific files
+.DS_Store
+Thumbs.db
+
+# Editor/IDE files
+.vscode/
+.idea/
+*.sublime-project
+*.sublime-workspace
+
+# Miscellaneous
+*.bak
+*.swp
+*~
+
+# Ignore uploaded files or user data if any
+uploads/
+data/

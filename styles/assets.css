@@ -71,7 +71,7 @@
 
 /* toggle overlay */
 .d_none {
-    display: none;
+    display: none !important;
 }
 
 #overlay {
@@ -88,7 +88,7 @@
 .detail_card_border {
     filter: drop-shadow(2px 4px 6px black);
     padding: 16px 14px;
-    height: 640px;
+    height: 680px;
     width: 460px;
     display: flex;
     align-items: center;
@@ -105,8 +105,9 @@
 
 .details_card_background {
     display: flex;
-    align-items: flex-start;
-    justify-content: center;
+    align-items: center;
+    justify-content: flex-start;
+    flex-direction: column;
     height: 100%;
     width: 100%;
     background-color: rgba(250, 250, 250, 0.9);
@@ -222,7 +223,7 @@
 .overlay_battlepoints {
     font-family: 'Lucida Sans Unicode';
     margin-right: 24px;
-    font-size: 24px;
+    font-size: 20px;
     font-weight: 700;
 }
 
@@ -242,10 +243,92 @@
     left: 22%;
 }
 
+.overlay_nav {
+    height: 36px;
+    width: 87%;
+    margin-top: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    padding: 2px 8px;
+    border: 4px inset black;
+    border-radius: 16px;
+    
+}
+
+.overlay_btn_1 {
+    height: 32px;
+    border: 4px outset black;
+    border-radius: 16px;
+    background: linear-gradient(
+        45deg,
+        #8d8d8d,    /* Dark silver */
+        #a5a5a5,    /* Gradual gray */
+        #c3c3c3,    /* Lighter gray */
+        #e1e1e1,    /* Light silver */
+        #f0f0f0,    /* Subtle highlight */
+        #e1e1e1,    /* Light silver fade */
+        #c3c3c3,    /* Lighter gray return */
+        #a5a5a5,    /* Gradual gray */
+        #8d8d8d     /* Dark silver - seamless loop */
+    );
+    
+    /* Animation properties */
+    background-size: 400% 400%; /* Large size for smooth movement */
+    animation: metallicShift 7.50s ease infinite; /* Back-and-forth motion */
+}
+
+/* NEW: Styles for AI popup overlay */
+#ai_popup {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7); /* Darker for better contrast */
+    z-index: 3; /* Higher than details overlay (z-index: 2) */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.ai_popup_content {
+    background-color: white;
+    padding: 24px;
+    border-radius: 16px;
+    border: 4px outset black;
+    max-width: 400px;
+    text-align: center;
+    position: relative;
+    filter: drop-shadow(2px 4px 6px black);
+}
+
+.ai_popup_text {
+    font-family: 'Lucida Sans Unicode';
+    font-size: 18px;
+    color: #333;
+    margin-bottom: 16px;
+}
+
+.ai_close_btn {
+    position: absolute;
+    top: 8px;
+    right: 8px;
+    background: none;
+    border: none;
+    font-size: 24px;
+    cursor: pointer;
+    color: #888;
+}
+
+.ai_close_btn:hover {
+    color: #000;
+}
+
 .overlay_body {
     z-index: 4;
     position: absolute;
-    top: 407px;
+    top: 450px;
     left: 23px;
     color: black;
     background-image: radial-gradient(white 62%, lightgray);

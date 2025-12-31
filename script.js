@@ -38,6 +38,55 @@ function capitalizeName(name) {
         .join('-');                        // Join back with hyphen
 }
 
+// NEW: Async function to fetch AI description via PHP proxy
+async function getAIPokemonInfo(index) {
+    const pokemon = pokemonData[index];
+    if (!pokemon) {
+        console.error('Pokémon not found');
+        return;
+    }
+
+    const name = capitalizeName(pokemon.name);
+    const prompt = `Write a short description of the Pokémon ${name} in 3-4 sentences, including its type, abilities, and fun facts.`;
+
+    const requestBody = {
+        contents: [{
+            parts: [{
+                text: prompt
+            }]
+        }]
+    };
+
+    try {
+        const response = await fetch('/proxy.php', {  // CHANGED: Call your PHP proxy instead of Gemini URL
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(requestBody)
+        });
+
+        if (!response.ok) {
+            throw new Error(`Proxy error: ${response.status}`);
+        }
+
+        const data = await response.json();
+        const generatedText = data.candidates[0].content.parts[0].text.trim() || 'No info available.';
+
+        // Render in popup
+        const aiPopupDiv = document.getElementById('ai_popup');
+        aiPopupDiv.innerHTML = getAIPopupTemplate(generatedText);
+        toggleAIPopup(); // Show the popup
+
+    } catch (error) {
+        console.error('Proxy/Gemini error:', error);
+        const fallbackText = 'AI feature unavailable. Please try again later.';
+        const aiPopupDiv = document.getElementById('ai_popup');
+        aiPopupDiv.innerHTML = getAIPopupTemplate(fallbackText);
+        toggleAIPopup();
+    }
+}
+
 function renderPokemonCards(pokemonArray) {
     const contentDiv = document.getElementById('content');
     let html = '';
