@@ -292,15 +292,59 @@
     justify-content: center;
 }
 
-.ai_popup_content {
-    background-color: white;
+.ai_popup_border {
+    background: linear-gradient(
+        45deg,
+        #a56e1d ,    /* Dark silver */
+        #a58453,    /* Gradual gray */
+        #a08c6d,    /* Lighter gray */
+        #978f83,    /* Light silver */
+        #f0f0f0,    /* Subtle highlight */
+        #978f83,    /* Light silver fade */
+        #a08c6d,    /* Lighter gray return */
+        #a58453 ,    /* Gradual gray */
+        #a56e1d     /* Dark silver - seamless loop */
+    );
+    
+    /* Animation properties */
+    background-size: 400% 400%; /* Large size for smooth movement */
+    animation: metallicShift 7.50s ease infinite; /* Back-and-forth motion */
     padding: 24px;
     border-radius: 16px;
     border: 4px outset black;
     max-width: 400px;
     text-align: center;
-    position: relative;
+    /* position: relative; */
     filter: drop-shadow(2px 4px 6px black);
+}
+
+.ai_popup_content {
+    border: 4px inset black;
+    border-radius: 16px;
+    height: auto;
+    background-color: lightgray;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    flex-direction: column;
+}
+
+.ai_popup_img {
+    height: 170px;
+    width: 120px;
+    /* position: absolute;
+    top: 17%;
+    left: calc(50% - 175px); */
+    border-radius: 16px;
+    border: 4px outset black;
+    background-color: white;
+    margin-top: 16px;
+}
+
+.ai_popup_right {
+    padding: 16px;
+    text-align: center;
+    max-width: 390px;
 }
 
 .ai_popup_text {
@@ -312,8 +356,8 @@
 
 .ai_close_btn {
     position: absolute;
-    top: 8px;
-    right: 8px;
+    top: 30px;
+    right: 34px;
     background: none;
     border: none;
     font-size: 24px;

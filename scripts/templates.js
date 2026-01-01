@@ -76,9 +76,15 @@ function getDetailOverlayTemplate(pokemon, index) {
 // NEW: Template for AI popup content
 function getAIPopupTemplate(text) {
     return `
-        <div class="ai_popup_content" onclick="childClickEvent()">
-            <button class="ai_close_btn" onclick="toggleAIPopup()">&times;</button>
-            <p class="ai_popup_text">${text}</p>
+        <div class="ai_popup_border" onclick="childClickEvent()">
+            <div class="ai_popup_content">
+                <img class="ai_popup_img" src="./assets/img/poke_prof_by_grok.jpg" alt="AI_Icon">
+                <div class="ai_popup_right">
+                    <button class="ai_close_btn" onclick="toggleAIPopup()">&times;</button>
+                    <h3>Pokémon Prof. Gemini</h3>
+                    <p class="ai_popup_text">${text}</p>
+                </div>
+            </div>
         </div>
     `;
 }
