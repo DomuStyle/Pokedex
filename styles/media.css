@@ -163,6 +163,10 @@
         top: 202px;
         left: 83px;
     }
+
+    .ai_popup_border {
+        max-width: 340px;
+    }
 }
 
 @media  (max-width: 470px) {
@@ -213,6 +217,10 @@
 
     .navigation_buttons {
         left: 46px;
+    }
+
+    .ai_popup_border {
+        max-width: 280px;
     }
 }
 
@@ -272,6 +280,14 @@
 
     .navigation_buttons {
         left: 32px;
+    }
+
+    .ai_popup_border {
+        max-width: 240px;
+    }
+
+    .ai_popup_text {
+        font-size: 14px;
     }
 }
 

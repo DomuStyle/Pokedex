@@ -610,5 +610,5 @@ nav {
 .pokedex_text_img {
     width: 170px;
     margin: 0;
-    filter: none;
+    filter: drop-shadow(2px 4px 6px black);
 }

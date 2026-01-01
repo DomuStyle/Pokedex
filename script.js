@@ -67,7 +67,7 @@ let currentType = null; // stores currently selected type filter
 
 //     } catch (error) {
 //         console.error('Gemini API error:', error);
-//         const fallbackText = 'AI feature unavailable. Please check your API key or try again later.';
+//         const fallbackText = 'The Prof is busy right now, sorry. Please try again later!';
 //         const aiPopupDiv = document.getElementById('ai_popup');
 //         aiPopupDiv.innerHTML = getAIPopupTemplate(fallbackText);
 //         toggleAIPopup();
@@ -135,7 +135,7 @@ async function getAIPokemonInfo(index) {
 
     } catch (error) {
         console.error('Proxy/Gemini error:', error);
-        const fallbackText = 'AI feature unavailable. Please try again later.';
+        const fallbackText = 'The Prof is busy right now, sorry. Please try again later!';
         const aiPopupDiv = document.getElementById('ai_popup');
         aiPopupDiv.innerHTML = getAIPopupTemplate(fallbackText);
         toggleAIPopup();
