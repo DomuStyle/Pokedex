@@ -11,13 +11,6 @@ body {
     /* min-height: 100vh; */
 }
 
-/* body > * {
-    max-width: calc(100% - (100vw - 1440px));
-    margin-left: auto;
-    margin-right: auto;
-    width: 100%;
-} */
-
 header {
     height: 160px;
     display: flex;
@@ -53,6 +46,13 @@ header {
     flex-direction: column;
 }
 
+.header_nav {
+    width: 60%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
 .header_center_top {
     display: flex;
     align-items: center;
@@ -68,27 +68,6 @@ header {
     width: 100%;
     height: 32px;
 }
-
-/* RAINBOW BORDER ANIMATION */
-
-/* header {
-    border-bottom: 4px solid rgba(255, 0, 0, 1);
-    animation: rainbow 5s linear infinite;
-}
-
-@keyframes rainbow {
-    0% { border-bottom-color: red; }
-    14% { border-bottom-color: orange; }
-    28% { border-bottom-color: yellow; }
-    42% { border-bottom-color:  green; }
-    57% { border-bottom-color: blue; }
-    71% { border-bottom-color:  indigo; }
-    85% { border-bottom-color: violet; }
-    100% { border-bottom-color: red; }
-} */
-
-
-/* Floating Cards animation */
 
 .pokemon_card_container {
     /* Basic styling for the card */
