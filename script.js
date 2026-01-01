@@ -3,7 +3,7 @@ async function init() {
     showLoadingSpinner();
     await fetchAllPokemon();
     setupSearchListeners(); // Initialize the search listeners
-    setupTypeFilters(); // NEW: Set up type filter button listeners
+    setupTypeFilters(); // Set up type filter button listeners
 }
 
 // global variables and array's 
@@ -20,7 +20,62 @@ let displayedPokemon = []; // array to store currently displayed (filtered) Pok�
 let currentType = null; // stores currently selected type filter
 
 
-// NEW: Helper function to properly capitalize Pokémon names
+// Gemini request code for working AI-Feature in DEvelopment with Liveserver
+// comment ot before pusing to github and before live use!
+
+// const GEMINI_API_KEY = 'Your API-Key here'; // Replace with your actual Gemini API key and remove it before pushing to Github and Never use for live use!
+
+// comment in and out for use of this function in development and live use!
+// also dont forget to comment in and out the second getAIPokemonInfo function below!
+
+// async function getAIPokemonInfo(index) {
+//     const pokemon = pokemonData[index];
+//     if (!pokemon) {
+//         console.error('Pokémon not found');
+//         return;
+//     }
+
+//     const name = capitalizeName(pokemon.name);
+//     const prompt = `Write a short description of the Pokémon ${name} in 3-4 sentences, including its type, abilities, and fun facts.`;
+
+//     try {
+//         const response = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent?key=${GEMINI_API_KEY}`, {
+//             method: 'POST',
+//             headers: {
+//                 'Content-Type': 'application/json'
+//             },
+//             body: JSON.stringify({
+//                 contents: [{
+//                     parts: [{
+//                         text: prompt
+//                     }]
+//                 }]
+//             })
+//         });
+
+//         if (!response.ok) {
+//             throw new Error(`API error: ${response.status}`);
+//         }
+
+//         const data = await response.json();
+//         const generatedText = data.candidates[0].content.parts[0].text.trim() || 'No info available.';
+
+//         // Render in popup
+//         const aiPopupDiv = document.getElementById('ai_popup');
+//         aiPopupDiv.innerHTML = getAIPopupTemplate(generatedText);
+//         toggleAIPopup(); // Show the popup
+
+//     } catch (error) {
+//         console.error('Gemini API error:', error);
+//         const fallbackText = 'AI feature unavailable. Please check your API key or try again later.';
+//         const aiPopupDiv = document.getElementById('ai_popup');
+//         aiPopupDiv.innerHTML = getAIPopupTemplate(fallbackText);
+//         toggleAIPopup();
+//     }
+// }
+
+
+// Helper function to properly capitalize Pokémon names
 function capitalizeName(name) {
     if (!name) return '';
     
@@ -38,7 +93,7 @@ function capitalizeName(name) {
         .join('-');                        // Join back with hyphen
 }
 
-// NEW: Async function to fetch AI description via PHP proxy
+// Async function to fetch AI description via PHP proxy
 async function getAIPokemonInfo(index) {
     const pokemon = pokemonData[index];
     if (!pokemon) {

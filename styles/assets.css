@@ -286,7 +286,7 @@
     width: 100%;
     height: 100%;
     background-color: rgba(0, 0, 0, 0.7); /* Darker for better contrast */
-    z-index: 3; /* Higher than details overlay (z-index: 2) */
+    z-index: 14; /* Higher than details overlay (z-index: 2) */
     display: flex;
     align-items: center;
     justify-content: center;
