@@ -33,7 +33,7 @@
         position: fixed;
         top: 20%;
         left: 16%;
-        height: 540px;
+        height: 600px;
         width: 380px;
     }
 
@@ -52,7 +52,7 @@
         font-size: 20px;
         height: 170px;
         width: 330px;
-        top: 340px;
+        top: 390px;
         left: 27px;
     }
 
@@ -96,11 +96,12 @@
 }
 
 @media  (max-width: 550px) {
+
     .detail_card_border {
         position: fixed;
         top: 20%;
         left: 11%;
-        height: 540px;
+        height: 600px;
         width: 380px;
     }
 
@@ -115,17 +116,11 @@
         left: 14%;
     }
 
-    /* .overlay_header2 {
-        height: 55px;
-        top: 6px;
-        right: 5px;
-    } */
-
     .overlay_body {
         font-size: 20px;
         height: 170px;
         width: 330px;
-        top: 340px;
+        top: 390px;
         left: 27px;
     }
 
@@ -136,11 +131,12 @@
 }
 
 @media  (max-width: 500px) {
+
     .detail_card_border {
         position: fixed;
         top: 20%;
         left: 8%;
-        height: 540px;
+        height: 600px;
         width: 380px;
     }
 
@@ -155,17 +151,11 @@
         left: 14%;
     }
 
-    /* .overlay_header2 {
-        height: 55px;
-        top: 6px;
-        right: 5px;
-    } */
-
     .overlay_body {
         font-size: 20px;
         height: 170px;
         width: 330px;
-        top: 340px;
+        top: 390px;
         left: 27px;
     }
 
@@ -178,7 +168,7 @@
 @media  (max-width: 470px) {
 
     .detail_card_border {
-        height: 544px;
+        height: 600px;
         width: 350px;
     }
 
@@ -201,7 +191,7 @@
 @media  (max-width: 430px) {
 
     .detail_card_border {
-        height: 544px;
+        height: 600px;
         width: 310px;
     }
 
@@ -229,8 +219,9 @@
 @media  (max-width: 390px) {
 
     .detail_card_border {
-        height: 560px;
+        height: 610px;
         width: 280px;
+        left: 6%;
     }
 
     .details_card_display {
@@ -239,6 +230,7 @@
     }
 
     .overlay_body {
+        top: 394px;
         font-size: 18px;
         height: 170px;
         width: 235px;
@@ -286,9 +278,9 @@
 @media  (max-width: 360px) {
 
     .detail_card_border {
-        height: 600px;
+        height: 640px;
         width: 250px;
-        left: 4%;
+        left: 6%;
     }
 
     .details_card_display {
