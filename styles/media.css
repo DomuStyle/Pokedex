@@ -25,6 +25,10 @@
     .header_section {
         flex-direction: column;
     }
+
+    .header_title {
+        margin-bottom: 4px;
+    }
 }
 
 @media  (max-width: 640px) {
@@ -66,6 +70,10 @@
 
     header {
         height: 240px;
+    }
+
+    .header_section {
+        margin-bottom: 16px;
     }
 
     #search_pokemon {
@@ -225,6 +233,23 @@
 }
 
 @media  (max-width: 390px) {
+
+    header {
+        height: 256px;
+    }
+
+    .header_section {
+        margin-bottom: 12px;
+    }
+
+    .header_center {
+        display: none;
+    }
+
+    .header_center_responsive {
+        display: block !important;
+    }
+
 
     .detail_card_border {
         height: 610px;

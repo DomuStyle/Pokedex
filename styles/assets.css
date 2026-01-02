@@ -74,6 +74,10 @@
     display: none !important;
 }
 
+.d_none_responsive {
+    display: none;
+}
+
 #overlay {
     position: fixed;
     top: 0;
