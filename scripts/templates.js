@@ -2,9 +2,9 @@ function getLoadingSpinnertemplate() {
     return `
             <div class="spinner_container">
                 <div class="loading_spinner">
-                    <img src="./assets/icons/pokemon-1536847_640.png" alt="Pokeball_icon">
+                    <img src="./assets/icons/pokemon-1536847_640.png" alt="Pokeball_icon" loading="lazy">
                 </div>
-                <img class="pika_gif" src="./assets/Running-Pikachu-GIF.gif" alt="">
+                <img class="pika_gif" src="./assets/Running-Pikachu-GIF.gif" alt="" loading="lazy">
             </div>
             `;
 }
@@ -22,7 +22,7 @@ function getPokemonCardsTemplate(pokemon, index) {
                 </div>
             </div>    
             <div class="card_display" ${dynamicBackground}>
-                <img src="${pokemon.sprites.other.home.front_default}" alt="${pokemon.name}_image">
+                <img src="${pokemon.sprites.other.home.front_default}" alt="${pokemon.name}_image" loading="lazy">
             </div>
             <div class="card_body">
                 <p><b>height:</b> ${pokemon.height / 10}m</p>
@@ -52,7 +52,7 @@ function getDetailOverlayTemplate(pokemon, index) {
                             </div>
                         </div>
 
-                        <img class="overlay_img" src="${pokemon.sprites.other.home.front_default}" alt="${pokemon.name}_image">
+                        <img class="overlay_img" src="${pokemon.sprites.other.home.front_default}" alt="${pokemon.name}_image" loading="lazy">
                     </div>
                     <div class="overlay_nav">
                         <!-- CHANGED: Added onclick to call AI function with index -->
@@ -64,8 +64,8 @@ function getDetailOverlayTemplate(pokemon, index) {
                         <p class="overlay_body_text"><b>Base XP:</b> ${pokemon.base_experience}</p>
                         <p class="overlay_body_text"><b>Abilities:</b> ${abilityItem}</p>
                         <div class="navigation_buttons">
-                            <img src="./assets/icons/arrowLeft.png" class="btn_left" onClick="showPreviousPokemon(${index})">
-                            <img src="./assets/icons/arrowRight.png" class="btn_right" onClick="showNextPokemon(${index})">
+                            <img src="./assets/icons/arrowLeft.png" class="btn_left" onClick="showPreviousPokemon(${index})" loading="lazy">
+                            <img src="./assets/icons/arrowRight.png" class="btn_right" onClick="showNextPokemon(${index})" loading="lazy">
                         </div>
                     </div>
                 </div>
@@ -78,7 +78,7 @@ function getAIPopupTemplate(text) {
     return `
         <div class="ai_popup_border" onclick="childClickEvent()">
             <div class="ai_popup_content">
-                <img class="ai_popup_img" src="./assets/img/poke_prof_by_grok.jpg" alt="AI_Icon">
+                <img class="ai_popup_img" src="./assets/img/poke_prof_by_grok.jpg" alt="AI_Icon" loading="lazy">
                 <div class="ai_popup_right">
                     <button class="ai_close_btn" onclick="toggleAIPopup()">&times;</button>
                     <h3>Pokémon Prof. Gemini</h3>
