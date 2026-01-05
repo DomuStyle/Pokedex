@@ -169,7 +169,16 @@
             <img class="pokedex_text_img" src="./assets/icons/Pokedex_text.png" alt="" loading="lazy">
         </div>
         <a href="https://www.textstudio.com/">Text generated on textstudio.com</a>
-    </footer>   
+    </footer>
+    <script>
+    if ('serviceWorker' in navigator) {
+        navigator.serviceWorker.register('/scripts/sw.js').then(reg => {
+            console.log('Service Worker registered');
+        }).catch(err => {
+            console.error('Service Worker error:', err);
+        });
+    }
+    </script>   
 </body>
 <script src="./scripts/pokepowers.js"></script>
 <script src="./scripts/fetch.js"></script>

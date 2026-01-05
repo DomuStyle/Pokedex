@@ -22,7 +22,7 @@ function getPokemonCardsTemplate(pokemon, index) {
                 </div>
             </div>    
             <div class="card_display" ${dynamicBackground}>
-                <img src="${pokemon.sprites.other.home.front_default}" alt="${pokemon.name}_image" loading="lazy">
+                <img data-src="${pokemon.sprites.front_default || pokemon.sprites.other['official-artwork'].front_default}" src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" alt="${pokemon.name}_image" loading="lazy">
             </div>
             <div class="card_body">
                 <p><b>height:</b> ${pokemon.height / 10}m</p>
@@ -37,7 +37,7 @@ function getPokemonCardsTemplate(pokemon, index) {
 function getDetailOverlayTemplate(pokemon, index) {
     let abilityItem = pokemon.abilities.map(ability => capitalizeName(ability.ability.name)).join(", ");
     let dynamicBackground = renderDynamicBackground(pokemon);
-    console.log(pokemon);
+    // console.log(pokemon.sprites);  // NEW: Debug log to check sprite paths
     
     return `
             <div class="detail_card_border moving_gradient" onClick="childClickEvent()">
@@ -52,7 +52,7 @@ function getDetailOverlayTemplate(pokemon, index) {
                             </div>
                         </div>
 
-                        <img class="overlay_img" src="${pokemon.sprites.other.home.front_default}" alt="${pokemon.name}_image" loading="lazy">
+                        <img class="overlay_img" data-src="${pokemon.sprites.other.home.front_default || pokemon.sprites.other['official-artwork'].front_default}" src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" alt="${pokemon.name}_image" loading="lazy">
                     </div>
                     <div class="overlay_nav">
                         <!-- CHANGED: Added onclick to call AI function with index -->
@@ -90,8 +90,15 @@ function getAIPopupTemplate(text) {
 }
 
 function getShowMoreBtnTemplate() {
+    let hasMore = true;
+    if (currentType !== null) {
+        hasMore = offset < currentTypePokemonList.length;
+    } else {
+        hasMore = true;  // Assume more for general (up to 1350)
+    }
+
     let showMoreBtn = document.getElementById('show_more_btn');
-    showMoreBtn.innerHTML = `
+    showMoreBtn.innerHTML = hasMore ? `
                             <button onClick="loadMorePokemon()">show more</button>
-                            `;
+                            ` : '';  // NEW: Hide if no more
 }

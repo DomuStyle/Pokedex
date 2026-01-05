@@ -1,63 +1,116 @@
-// fetch data from pokeAPI and store inside pokemonData array
+let offset = 0;  // NEW: Track pagination offset
+const LIMIT = 24;  // Batch size
+
+let allPokemonNames = [];  // NEW: Global for search suggestions (name/id only)
 
 async function fetchAllPokemon() {
     try {
-        // Fetch the initial list (keep at 100 for buffer, or reduce to 48 for even faster initial load)
-        const initialResponse = await fetch('https://pokeapi.co/api/v2/pokemon?limit=100&offset=0');
-        const initialData = await initialResponse.json();
+        showLoadingSpinner();
+        const response = await fetch(`https://pokeapi.co/api/v2/pokemon?limit=${LIMIT}&offset=0`);
+        const data = await response.json();
         
-        // Parallel fetch details: Map to promises, use allSettled to handle partial failures
-        const detailPromises = initialData.results.map(result => fetchPokemonDetails(result.url));
-        const initialResults = await Promise.allSettled(detailPromises);
-        const initialPokemon = initialResults
-            .filter(result => result.status === 'fulfilled')
-            .map(result => result.value)
-            .filter(p => p !== null); // Filter out any nulls from errors
-        pokemonData.push(...initialPokemon); // Spread to add all successful ones
-
-        // NEW: Add to displayedPokemon (since currentType is null initially, add all)
-        displayedPokemon.push(...initialPokemon);
-
-        // Render the first batch immediately (will skip any undefined/null)
+        const detailPromises = data.results.map(result => fetchPokemonDetails(result.url));
+        const results = await Promise.allSettled(detailPromises);
+        const pokemonBatch = results
+            .filter(r => r.status === 'fulfilled')
+            .map(r => r.value)
+            .filter(p => p !== null);
+        
+        pokemonData.push(...pokemonBatch);
+        displayedPokemon.push(...pokemonBatch);
+        
         renderPokemonCards(displayedPokemon);
-
-        // Fetch remaining in background (parallelize this too, but in batches to avoid overwhelming browser)
-        const remainingResponse = await fetch('https://pokeapi.co/api/v2/pokemon?limit=1250&offset=100');
-        const remainingData = await remainingResponse.json();
-        
-        // Batch remaining into groups of 100 to prevent too many concurrent requests
-        const batchSize = 100;
-        for (let i = 0; i < remainingData.results.length; i += batchSize) {
-            const batch = remainingData.results.slice(i, i + batchSize);
-            const batchPromises = batch.map(result => fetchPokemonDetails(result.url));
-            const batchResults = await Promise.allSettled(batchPromises);
-            const batchPokemon = batchResults
-                .filter(result => result.status === 'fulfilled')
-                .map(result => result.value)
-                .filter(p => p !== null); // Filter out any nulls from errors
-            pokemonData.push(...batchPokemon);
-
-            // NEW: Conditionally add to displayedPokemon based on current filter
-            if (currentType === null) {
-                displayedPokemon.push(...batchPokemon);
-            } else {
-                const matching = batchPokemon.filter(p => p && p.types.some(t => t.type.name === currentType));
-                displayedPokemon.push(...matching);
-            }
-        }
-
+        offset += LIMIT;  // Advance offset
     } catch (error) {
-        console.error("Error fetching Pokémon data:", error);
+        console.error("Error fetching initial Pokémon:", error);
     }
 }
 
-// fetch detailed data about each pokemon using pokemon url
+// UPDATED: Function to fetch next batch (called from loadMorePokemon)
+async function fetchNextBatch() {
+    try {
+        let pokemonUrls;
+        if (currentType !== null && currentTypePokemonList.length > 0) {
+            pokemonUrls = currentTypePokemonList.slice(offset, offset + LIMIT);  // Use filtered list
+            console.log('Next filtered URLs length:', pokemonUrls.length);  // NEW: Debug
+        } else {
+            const response = await fetch(`https://pokeapi.co/api/v2/pokemon?limit=${LIMIT}&offset=${offset}`);
+            const data = await response.json();
+            if (data.results.length === 0) return [];
+            pokemonUrls = data.results.map(result => result.url);
+            console.log('Next general URLs length:', pokemonUrls.length);  // NEW: Debug
+        }
+        
+        if (pokemonUrls.length === 0) return [];
+        
+        const detailPromises = pokemonUrls.map(url => fetchPokemonDetails(url));
+        const results = await Promise.allSettled(detailPromises);
+        const pokemonBatch = results
+            .filter(r => r.status === 'fulfilled')
+            .map(r => r.value)
+            .filter(p => p !== null);
+        
+        offset += LIMIT;
+        return pokemonBatch;
+    } catch (error) {
+        console.error("Error fetching next batch:", error);
+        return [];
+    }
+}
+
 async function fetchPokemonDetails(url) {
     try {
         const response = await fetch(url);
-        return await response.json();
+        const data = await response.json();
+        // Keep only needed fields to reduce object size ~50-70%
+        return {
+            id: data.id,
+            name: data.name,
+            types: data.types,
+            sprites: data.sprites,
+            height: data.height,
+            weight: data.weight,
+            base_experience: data.base_experience,
+            abilities: data.abilities,
+            stats: data.stats
+        };
     } catch (error) {
         console.error("Error fetching Pokémon details:", error);
-        return null; // Return null on error for easy filtering
+        return null;
+    }
+}
+
+// NEW: Helper to fetch a single Pokémon's details on-demand (for search/overlay if not loaded)
+async function fetchSinglePokemon(nameOrId) {
+    try {
+        const response = await fetch(`https://pokeapi.co/api/v2/pokemon/${nameOrId.toLowerCase()}`);
+        const data = await response.json();
+        const stripped = {
+            id: data.id,
+            name: data.name,
+            types: data.types,
+            sprites: data.sprites,
+            height: data.height,
+            weight: data.weight,
+            base_experience: data.base_experience,
+            abilities: data.abilities,
+            stats: data.stats
+        };
+        pokemonData.push(stripped);  // Add to local for future use
+        return stripped;
+    } catch (error) {
+        console.error("Error fetching single Pokémon:", error);
+        return null;
+    }
+}
+
+// NEW: Load all names/IDs once (lightweight, no details)
+async function loadAllPokemonNames() {
+    try {
+        const response = await fetch('https://pokeapi.co/api/v2/pokemon?limit=1350');
+        const data = await response.json();
+        allPokemonNames = data.results.map(p => ({ name: p.name, id: parseInt(p.url.split('/').slice(-2, -1)[0]) }));
+    } catch (error) {
+        console.error("Error loading names for search:", error);
     }
 }

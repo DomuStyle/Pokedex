@@ -10,13 +10,19 @@ node_modules/
 *.env.test
 *.env.production
 
-# Sensitive config files (e.g., API keys)
+# Sensitive config files
 config.js
 scripts/config.js
 
-# PHP proxy file (sensitive, contains API key)
+# PHP proxy file
 proxy.php
 api/proxy.php  # If in a subfolder
+
+# Service Workers and Cache-Related Files
+# Ignore these to prevent pushing environment-specific or regeneratable worker scripts.
+# Workers like sw.js can contain paths or logic that vary per deploy; add future similar files here.
+sw.js
+scripts/sw.js
 
 # Build/output directories
 dist/

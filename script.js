@@ -2,6 +2,7 @@
 async function init() {
     showLoadingSpinner();
     await fetchAllPokemon();
+    await loadAllPokemonNames();  // NEW: Load names for search
     setupSearchListeners(); // Initialize the search listeners
     setupTypeFilters(); // Set up type filter button listeners
 }
@@ -19,6 +20,16 @@ let displayedPokemon = []; // array to store currently displayed (filtered) Pok�
 
 let currentType = null; // stores currently selected type filter
 
+let currentTypePokemonList = [];  // NEW: Store full list for filtered pagination
+
+// NEW: Function to set up click listeners on type buttons
+function setupTypeFilters() {
+    const typeButtons = document.querySelectorAll('[class^="header_btn_"]');
+    typeButtons.forEach(btn => {
+        const type = btn.className.replace('header_btn_', '');
+        btn.addEventListener('click', () => applyFilter(type));
+    });
+}
 
 // Gemini request code for working AI-Feature in DEvelopment with Liveserver
 // comment ot before pusing to github and before live use!
@@ -169,6 +180,7 @@ function renderPokemonCards(pokemonArray) {
     }
     contentDiv.innerHTML = html;
     getShowMoreBtnTemplate();
+    lazyLoadImages();  // NEW: Call after rendering
 }
 
 // render details card overlay
@@ -178,6 +190,7 @@ function renderDetailsOverlay(index) {
     // console.log('Index before template:', index);
     let overlayTemplate = getDetailOverlayTemplate(pokemon, index);
     overlayDiv.innerHTML = overlayTemplate; 
+    lazyLoadImages();  // NEW: Call after inserting overlay HTML to observe the new img
 }
 
 // render dynamic bacgrounds
@@ -230,40 +243,38 @@ function setupSearchListeners() {
     });
 }
 
+// Updated searchPokemon to use allPokemonNames
 function searchPokemon() {
     let input = document.getElementById('search_pokemon').value.toLowerCase();
     let suggestions = document.getElementById('suggestions');
 
     if (input.length < 3) {
         suggestions.innerHTML = '';
-        currentFocus = -1; // Reset focus
+        currentFocus = -1;
         return;
     }
 
-    // CHANGED: Filter from displayedPokemon (respects current type filter) and limit to the first 10 hits (guard against null/undefined)
-    results = displayedPokemon
-        .filter(pokemon => pokemon && pokemon.name && pokemon.name.toLowerCase().startsWith(input)) // Added guard: Skip invalid entries to prevent errors
+    // NEW: Filter from allPokemonNames (full dex, names only)
+    results = allPokemonNames
+        .filter(p => p.name.toLowerCase().startsWith(input))
         .slice(0, 10);
    
     suggestions.innerHTML = '';
-    currentFocus = -1; // Reset focus whenever the list updates
+    currentFocus = -1;
 
-    results.forEach((pokemon, i) => {
-        // Find the index in the original pokemonData array
-        let pokemonIndex = pokemonData.findIndex(p => p && p.id === pokemon.id); // Added guard: Skip invalid
+    results.forEach((p, i) => {
+        // NEW: Use name/id to fetch details if selected (in handleSearchSelection)
+        const elem = document.createElement('p');
+        elem.className = 'suggestion-item';
+        elem.innerText = capitalizeName(p.name);
+        elem.setAttribute('role', 'option');
         
-        const p = document.createElement('p');
-        p.className = 'suggestion-item'; // Add class for easy selection
-        p.innerText = capitalizeName(pokemon.name); // Use innerText for safety
-        p.setAttribute('role', 'option'); // Accessibility: mark as option
-        
-        p.onclick = () => {
-            handleSearchSelection(pokemonIndex);
+        elem.onclick = () => {
+            handleSearchSelection(p.name);  // NEW: Pass name (fetch if not loaded)
         };
-        suggestions.appendChild(p);
+        suggestions.appendChild(elem);
     });
 
-    // Accessibility: mark suggestions as listbox
     suggestions.setAttribute('role', 'listbox');
 }
 
@@ -285,19 +296,23 @@ function removeActive(items) {
     }
 }
 
-function handleSearchSelection(index) {
-    // Added: Replace input with full selected Pokémon name on selection.
-    // This ensures it's set for both keyboard and mouse selections.
-    document.getElementById('search_pokemon').value = capitalizeName(pokemonData[index].name);
+// Updated handleSearchSelection to fetch if not loaded
+async function handleSearchSelection(name) {
+    let pokemon = pokemonData.find(p => p.name.toLowerCase() === name.toLowerCase());
+    if (!pokemon) {
+        pokemon = await fetchSinglePokemon(name);  // NEW: From fetch.js
+        if (!pokemon) return;  // Error handling
+        displayedPokemon.push(pokemon);  // Add for display if needed
+    }
+    const index = pokemonData.indexOf(pokemon);
 
-    renderDetailsOverlay(index); // from script.js
-    toggleOverlay();             // from assets.js
+    document.getElementById('search_pokemon').value = capitalizeName(name);
+    renderDetailsOverlay(index);
+    toggleOverlay();
     
-    // Clear suggestions after selection
     document.getElementById('suggestions').innerHTML = '';
-    currentFocus = -1; // Reset focus
+    currentFocus = -1;
 }
-
 
 window.addEventListener('click', function(e) {
     const searchInput = document.getElementById('search_pokemon');
@@ -323,7 +338,7 @@ function setupTypeFilters() {
     });
 }
 
-// NEW: Function to apply or toggle a type filter
+// UPDATED: Function to apply or toggle a type filter
 function applyFilter(selectedType) {
     if (currentType === selectedType) {
         currentType = null; // Toggle off
@@ -331,11 +346,19 @@ function applyFilter(selectedType) {
         currentType = selectedType; // Set new filter
     }
 
-    // Recompute displayedPokemon from the full pokemonData
+    // Reset and re-fetch
+    pokemonData = [];  // Clear to release memory
+    displayedPokemon = [];
+    offset = 0;
+    counter = 0;  // NEW: Reset counter to allow rendering
+    currentTypePokemonList = [];  // Reset list
+    const contentDiv = document.getElementById('content');
+    contentDiv.innerHTML = '';
+
     if (currentType === null) {
-        displayedPokemon = pokemonData.slice(); // Shallow copy to separate array
+        fetchAllPokemon();  // Reset to all
     } else {
-        displayedPokemon = pokemonData.filter(p => p && p.types.some(t => t.type.name === currentType));
+        fetchFilteredPokemon(currentType);  // Fetch by type
     }
 
     // Update active class on buttons
@@ -345,12 +368,62 @@ function applyFilter(selectedType) {
         const selectedBtn = document.querySelector(`.header_btn_${currentType}`);
         if (selectedBtn) selectedBtn.classList.add('active');
     }
+}
 
-    // Reset and re-render
-    counter = 0;
-    const contentDiv = document.getElementById('content');
-    contentDiv.innerHTML = '';
-    renderPokemonCards(displayedPokemon);
+// UPDATED: Fetch initial batch for type and store full list
+async function fetchFilteredPokemon(type) {
+    try {
+        const response = await fetch(`https://pokeapi.co/api/v2/type/${type}`);
+        const data = await response.json();
+        
+        currentTypePokemonList = data.pokemon.map(p => p.pokemon.url);  // Store full URLs
+        console.log('Full list for type', type, 'length:', currentTypePokemonList.length);  // Debug
+        
+        const pokemonUrls = currentTypePokemonList.slice(0, LIMIT);
+        console.log('Initial URLs for type', type, pokemonUrls);  // Debug
+        if (pokemonUrls.length === 0) {
+            console.warn('No Pokémon found for type:', type);
+            contentDiv.innerHTML = '<p>No Pokémon for this type.</p>';  // User message
+            return;
+        }
+        
+        const detailPromises = pokemonUrls.map(url => fetchPokemonDetails(url));
+        const results = await Promise.allSettled(detailPromises);
+        const pokemonBatch = results.filter(r => r.status === 'fulfilled').map(r => r.value).filter(p => p !== null);
+        
+        console.log('Fetched batch length for type', type, pokemonBatch.length);  // NEW: Debug batch after details
+        
+        if (pokemonBatch.length === 0) {
+            console.error('Failed to fetch details for type:', type);
+            contentDiv.innerHTML = '<p>Error loading Pokémon details.</p>';  // NEW: Error message
+            return;
+        }
+        
+        pokemonData.push(...pokemonBatch);
+        displayedPokemon.push(...pokemonBatch);
+        
+        renderPokemonCards(displayedPokemon);
+        offset += LIMIT;
+    } catch (error) {
+        console.error("Error fetching filtered:", error);
+        contentDiv.innerHTML = '<p>Error loading type. Try again.</p>';
+    }
+}
+
+// NEW: Enhanced lazy loading with Observer
+function lazyLoadImages() {
+    const options = { rootMargin: '100px' };  // Preload 100px before view
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                const img = entry.target;
+                img.src = img.dataset.src;  // Load real src
+                observer.unobserve(img);
+            }
+        });
+    }, options);
+
+    document.querySelectorAll('img[data-src]').forEach(img => observer.observe(img));
 }
 
 // log stored array for development | delete if app finished!

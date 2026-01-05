@@ -6,8 +6,13 @@ async function loadMorePokemon() {
     try {
         // CHANGED: Check against displayedPokemon length
         if (counter >= displayedPokemon.length) {
-            console.log("No more Pokémon to load");
-            return;
+            const nextBatch = await fetchNextBatch();  // NEW: Fetch from API
+            if (nextBatch.length === 0) {
+                console.log("No more Pokémon to load");
+                return;
+            }
+            pokemonData.push(...nextBatch);
+            displayedPokemon.push(...nextBatch);
         }
 
         let contentDiv = document.getElementById('content');
@@ -38,6 +43,7 @@ async function loadMorePokemon() {
         }
 
         contentDiv.innerHTML += additionalHtml;
+        lazyLoadImages();  // NEW: Call after adding new content
     } catch (error) {
         console.error("Could not load more Pokémon:", error);
     }
@@ -46,6 +52,9 @@ async function loadMorePokemon() {
 function toggleOverlay() {
     let overlayDiv = document.getElementById('overlay');
     overlayDiv.classList.toggle('d_none')
+    if (!overlayDiv.classList.contains('d_none')) {
+        setTimeout(lazyLoadImages, 0);  // NEW: Ensure called after visible
+    }
 }
 
 // NEW: Toggle function for AI popup
