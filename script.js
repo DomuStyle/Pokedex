@@ -22,7 +22,6 @@ let currentType = null; // stores currently selected type filter
 
 let currentTypePokemonList = [];  // NEW: Store full list for filtered pagination
 
-// NEW: Function to set up click listeners on type buttons
 function setupTypeFilters() {
     const typeButtons = document.querySelectorAll('[class^="header_btn_"]');
     typeButtons.forEach(btn => {
@@ -85,8 +84,6 @@ function setupTypeFilters() {
 //     }
 // }
 
-
-// Helper function to properly capitalize Pokémon names
 function capitalizeName(name) {
     if (!name) return '';
     
@@ -104,7 +101,6 @@ function capitalizeName(name) {
         .join('-');                        // Join back with hyphen
 }
 
-// Async function to fetch AI description via PHP proxy
 async function getAIPokemonInfo(index) {
     const pokemon = pokemonData[index];
     if (!pokemon) {
@@ -124,7 +120,7 @@ async function getAIPokemonInfo(index) {
     };
 
     try {
-        const response = await fetch('/proxy.php', {  // CHANGED: Call your PHP proxy instead of Gemini URL
+        const response = await fetch('/proxy.php', {  // Call your PHP proxy instead of Gemini URL
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
@@ -162,7 +158,7 @@ function renderPokemonCards(pokemonArray) {
         if (pokemon) { // Check if data was successfully fetched
             
             if (counter < 24) {
-                // CHANGED: Compute the original index in pokemonData for overlay
+                // Compute the original index in pokemonData for overlay
                 let originalIndex = pokemonData.indexOf(pokemon);
                 if (originalIndex === -1) {
                     console.error('Pokémon not found in global data');
@@ -180,20 +176,17 @@ function renderPokemonCards(pokemonArray) {
     }
     contentDiv.innerHTML = html;
     getShowMoreBtnTemplate();
-    lazyLoadImages();  // NEW: Call after rendering
+    lazyLoadImages();  // Call after rendering
 }
 
-// render details card overlay
 function renderDetailsOverlay(index) {
     let overlayDiv = document.getElementById('overlay');
     let pokemon = pokemonData[index];
-    // console.log('Index before template:', index);
     let overlayTemplate = getDetailOverlayTemplate(pokemon, index);
     overlayDiv.innerHTML = overlayTemplate; 
-    lazyLoadImages();  // NEW: Call after inserting overlay HTML to observe the new img
+    lazyLoadImages();  // Call after inserting overlay HTML to observe the new img
 }
 
-// render dynamic bacgrounds
 function renderDynamicBackground(pokemon) {
     const typeClasses = pokemon.types.map(type => type.type.name);
     let backgroundStyle = '';
@@ -236,14 +229,13 @@ function setupSearchListeners() {
             if (currentFocus > -1 && items[currentFocus]) {
                 // Replace input with full selected name on Enter (selection).
                 searchInput.value = items[currentFocus].innerText;
-                addActive(items, searchInput); // Added: Re-highlight briefly for visual consistency during selection.
+                addActive(items, searchInput); // Re-highlight briefly for visual consistency during selection.
                 items[currentFocus].click(); // Simulate click to select
             }
         }
     });
 }
 
-// Updated searchPokemon to use allPokemonNames
 function searchPokemon() {
     let input = document.getElementById('search_pokemon').value.toLowerCase();
     let suggestions = document.getElementById('suggestions');
@@ -263,14 +255,14 @@ function searchPokemon() {
     currentFocus = -1;
 
     results.forEach((p, i) => {
-        // NEW: Use name/id to fetch details if selected (in handleSearchSelection)
+        // Use name/id to fetch details if selected (in handleSearchSelection)
         const elem = document.createElement('p');
         elem.className = 'suggestion-item';
         elem.innerText = capitalizeName(p.name);
         elem.setAttribute('role', 'option');
         
         elem.onclick = () => {
-            handleSearchSelection(p.name);  // NEW: Pass name (fetch if not loaded)
+            handleSearchSelection(p.name);  // Pass name (fetch if not loaded)
         };
         suggestions.appendChild(elem);
     });
@@ -296,7 +288,6 @@ function removeActive(items) {
     }
 }
 
-// Updated handleSearchSelection to fetch if not loaded
 async function handleSearchSelection(name) {
     let pokemon = pokemonData.find(p => p.name.toLowerCase() === name.toLowerCase());
     if (!pokemon) {
@@ -329,7 +320,6 @@ function selectPokemon(name) {
     toggleOverlay(name);
 }
 
-// NEW: Function to set up click listeners on type buttons
 function setupTypeFilters() {
     const typeButtons = document.querySelectorAll('[class^="header_btn_"]');
     typeButtons.forEach(btn => {
@@ -338,7 +328,6 @@ function setupTypeFilters() {
     });
 }
 
-// UPDATED: Function to apply or toggle a type filter
 function applyFilter(selectedType) {
     if (currentType === selectedType) {
         currentType = null; // Toggle off
@@ -350,7 +339,7 @@ function applyFilter(selectedType) {
     pokemonData = [];  // Clear to release memory
     displayedPokemon = [];
     offset = 0;
-    counter = 0;  // NEW: Reset counter to allow rendering
+    counter = 0;  // Reset counter to allow rendering
     currentTypePokemonList = [];  // Reset list
     const contentDiv = document.getElementById('content');
     contentDiv.innerHTML = '';
@@ -361,7 +350,6 @@ function applyFilter(selectedType) {
         fetchFilteredPokemon(currentType);  // Fetch by type
     }
 
-    // Update active class on buttons
     const typeButtons = document.querySelectorAll('[class^="header_btn_"]');
     typeButtons.forEach(b => b.classList.remove('active'));
     if (currentType !== null) {
@@ -370,17 +358,14 @@ function applyFilter(selectedType) {
     }
 }
 
-// UPDATED: Fetch initial batch for type and store full list
 async function fetchFilteredPokemon(type) {
     try {
         const response = await fetch(`https://pokeapi.co/api/v2/type/${type}`);
         const data = await response.json();
         
         currentTypePokemonList = data.pokemon.map(p => p.pokemon.url);  // Store full URLs
-        console.log('Full list for type', type, 'length:', currentTypePokemonList.length);  // Debug
         
         const pokemonUrls = currentTypePokemonList.slice(0, LIMIT);
-        console.log('Initial URLs for type', type, pokemonUrls);  // Debug
         if (pokemonUrls.length === 0) {
             console.warn('No Pokémon found for type:', type);
             contentDiv.innerHTML = '<p>No Pokémon for this type.</p>';  // User message
@@ -390,9 +375,7 @@ async function fetchFilteredPokemon(type) {
         const detailPromises = pokemonUrls.map(url => fetchPokemonDetails(url));
         const results = await Promise.allSettled(detailPromises);
         const pokemonBatch = results.filter(r => r.status === 'fulfilled').map(r => r.value).filter(p => p !== null);
-        
-        console.log('Fetched batch length for type', type, pokemonBatch.length);  // NEW: Debug batch after details
-        
+                
         if (pokemonBatch.length === 0) {
             console.error('Failed to fetch details for type:', type);
             contentDiv.innerHTML = '<p>Error loading Pokémon details.</p>';  // NEW: Error message
@@ -410,7 +393,6 @@ async function fetchFilteredPokemon(type) {
     }
 }
 
-// NEW: Enhanced lazy loading with Observer
 function lazyLoadImages() {
     const options = { rootMargin: '100px' };  // Preload 100px before view
     const observer = new IntersectionObserver((entries) => {
@@ -425,6 +407,3 @@ function lazyLoadImages() {
 
     document.querySelectorAll('img[data-src]').forEach(img => observer.observe(img));
 }
-
-// log stored array for development | delete if app finished!
-// console.log(pokemonData);

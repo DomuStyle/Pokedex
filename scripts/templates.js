@@ -36,9 +36,7 @@ function getPokemonCardsTemplate(pokemon, index) {
 
 function getDetailOverlayTemplate(pokemon, index) {
     let abilityItem = pokemon.abilities.map(ability => capitalizeName(ability.ability.name)).join(", ");
-    let dynamicBackground = renderDynamicBackground(pokemon);
-    // console.log(pokemon.sprites);  // NEW: Debug log to check sprite paths
-    
+    let dynamicBackground = renderDynamicBackground(pokemon);    
     return `
             <div class="detail_card_border moving_gradient" onClick="childClickEvent()">
                 <div class="details_card_background">
@@ -73,7 +71,6 @@ function getDetailOverlayTemplate(pokemon, index) {
             `;
 }
 
-// NEW: Template for AI popup content
 function getAIPopupTemplate(text) {
     return `
         <div class="ai_popup_border" onclick="childClickEvent()">
@@ -100,5 +97,5 @@ function getShowMoreBtnTemplate() {
     let showMoreBtn = document.getElementById('show_more_btn');
     showMoreBtn.innerHTML = hasMore ? `
                             <button onClick="loadMorePokemon()">show more</button>
-                            ` : '';  // NEW: Hide if no more
+                            ` : '';  // Hide if no more
 }
