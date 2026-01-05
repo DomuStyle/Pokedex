@@ -14,6 +14,11 @@
         margin-bottom: 8px;
         margin-top: 16px;
     }
+
+    #suggestions {
+        top: 54px;
+        right: 12px;
+    }
 }
 
 @media  (max-width: 770px) {
