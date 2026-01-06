@@ -1,4 +1,5 @@
-// initialize the application by fecthing all Pokeon on page load
+/* Initializes the application by fetching all Pokemon on page load.
+ */
 async function init() {
     showLoadingSpinner();
     await fetchAllPokemon();
@@ -22,6 +23,9 @@ let currentType = null; // stores currently selected type filter
 
 let currentTypePokemonList = [];  // NEW: Store full list for filtered pagination
 
+/**
+ * Sets up event listeners for type filter buttons.
+ */
 function setupTypeFilters() {
     const typeButtons = document.querySelectorAll('[class^="header_btn_"]');
     typeButtons.forEach(btn => {
@@ -84,6 +88,12 @@ function setupTypeFilters() {
 //     }
 // }
 
+
+/**
+ * Capitalizes the given Pokémon name, handling special cases like hyphens and specific words.
+ * @param {string} name - The Pokémon name to capitalize.
+ * @returns {string} The capitalized name.
+ */
 function capitalizeName(name) {
     if (!name) return '';
     
@@ -101,6 +111,10 @@ function capitalizeName(name) {
         .join('-');                        // Join back with hyphen
 }
 
+/**
+ * Fetches AI-generated information for a Pokémon and displays it in a popup.
+ * @param {number} index - The index of the Pokémon in the pokemonData array.
+ */
 async function getAIPokemonInfo(index) {
     const pokemon = pokemonData[index];
     if (!pokemon) {
@@ -149,6 +163,10 @@ async function getAIPokemonInfo(index) {
     }
 }
 
+/**
+ * Renders Pokémon cards for the given array of Pokémon.
+ * @param {Array} pokemonArray - The array of Pokémon objects to render.
+ */
 function renderPokemonCards(pokemonArray) {
     const contentDiv = document.getElementById('content');
     let html = '';
@@ -179,6 +197,10 @@ function renderPokemonCards(pokemonArray) {
     lazyLoadImages();  // Call after rendering
 }
 
+/**
+ * Renders the details overlay for a specific Pokémon.
+ * @param {number} index - The index of the Pokémon in the pokemonData array.
+ */
 function renderDetailsOverlay(index) {
     let overlayDiv = document.getElementById('overlay');
     let pokemon = pokemonData[index];
@@ -187,6 +209,11 @@ function renderDetailsOverlay(index) {
     lazyLoadImages();  // Call after inserting overlay HTML to observe the new img
 }
 
+/**
+ * Generates a dynamic background style based on the Pokémon's types.
+ * @param {Object} pokemon - The Pokémon object.
+ * @returns {string} The style string for the background.
+ */
 function renderDynamicBackground(pokemon) {
     const typeClasses = pokemon.types.map(type => type.type.name);
     let backgroundStyle = '';
@@ -200,6 +227,9 @@ function renderDynamicBackground(pokemon) {
     return `style="${backgroundStyle}"`;
 }
 
+/**
+ * Sets up event listeners for the search input.
+ */
 function setupSearchListeners() {
     const searchInput = document.getElementById('search_pokemon');
     if (!searchInput) return;
@@ -236,6 +266,9 @@ function setupSearchListeners() {
     });
 }
 
+/**
+ * Performs a search for Pokémon based on the input value and updates suggestions.
+ */
 function searchPokemon() {
     let input = document.getElementById('search_pokemon').value.toLowerCase();
     let suggestions = document.getElementById('suggestions');
@@ -270,6 +303,11 @@ function searchPokemon() {
     suggestions.setAttribute('role', 'listbox');
 }
 
+/**
+ * Adds the active class to the currently focused suggestion item.
+ * @param {NodeList} items - The list of suggestion items.
+ * @param {HTMLElement} searchInput - The search input element.
+ */
 function addActive(items, searchInput) {
     if (!items || items.length === 0) return;
     removeActive(items);
@@ -282,12 +320,20 @@ function addActive(items, searchInput) {
     items[currentFocus].scrollIntoView({ block: "nearest", behavior: "smooth" });
 }
 
+/**
+ * Removes the active class from all suggestion items.
+ * @param {NodeList} items - The list of suggestion items.
+ */
 function removeActive(items) {
     for (let item of items) {
         item.classList.remove("suggestion-active");
     }
 }
 
+/**
+ * Handles the selection of a Pokémon from the search suggestions.
+ * @param {string} name - The name of the selected Pokémon.
+ */
 async function handleSearchSelection(name) {
     let pokemon = pokemonData.find(p => p.name.toLowerCase() === name.toLowerCase());
     if (!pokemon) {
@@ -314,6 +360,10 @@ window.addEventListener('click', function(e) {
     }
 });
 
+/**
+ * Selects a Pokémon by name and toggles the overlay.
+ * @param {string} name - The name of the Pokémon to select.
+ */
 function selectPokemon(name) {
     document.getElementById('search_pokemon').value = name;
     document.getElementById('suggestions').innerHTML = '';
@@ -328,6 +378,10 @@ function setupTypeFilters() {
     });
 }
 
+/**
+ * Applies a type filter to the Pokémon list.
+ * @param {string} selectedType - The type to filter by.
+ */
 function applyFilter(selectedType) {
     if (currentType === selectedType) {
         currentType = null; // Toggle off
@@ -358,6 +412,10 @@ function applyFilter(selectedType) {
     }
 }
 
+/**
+ * Fetches Pokémon filtered by the specified type.
+ * @param {string} type - The Pokémon type to filter by.
+ */
 async function fetchFilteredPokemon(type) {
     try {
         const response = await fetch(`https://pokeapi.co/api/v2/type/${type}`);
@@ -393,6 +451,9 @@ async function fetchFilteredPokemon(type) {
     }
 }
 
+/**
+ * Sets up lazy loading for images using IntersectionObserver.
+ */
 function lazyLoadImages() {
     const options = { rootMargin: '100px' };  // Preload 100px before view
     const observer = new IntersectionObserver((entries) => {
