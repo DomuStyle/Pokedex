@@ -1,3 +1,7 @@
+/**
+ * Returns the HTML template for the loading spinner.
+ * @returns {string} The HTML string for the loading spinner.
+ */
 function getLoadingSpinnertemplate() {
     return `
             <div class="spinner_container">
@@ -9,6 +13,12 @@ function getLoadingSpinnertemplate() {
             `;
 }
 
+/**
+ * Returns the HTML template for a Pokémon card.
+ * @param {Object} pokemon - The Pokémon data object.
+ * @param {number} index - The index of the Pokémon.
+ * @returns {string} The HTML string for the Pokémon card.
+ */
 function getPokemonCardsTemplate(pokemon, index) {
     let dynamicBackground = renderDynamicBackground(pokemon);
     
@@ -34,6 +44,12 @@ function getPokemonCardsTemplate(pokemon, index) {
     `;
 }
 
+/**
+ * Returns the HTML template for the detail overlay of a Pokémon.
+ * @param {Object} pokemon - The Pokémon data object.
+ * @param {number} index - The index of the Pokémon.
+ * @returns {string} The HTML string for the detail overlay.
+ */
 function getDetailOverlayTemplate(pokemon, index) {
     let abilityItem = pokemon.abilities.map(ability => capitalizeName(ability.ability.name)).join(", ");
     let dynamicBackground = renderDynamicBackground(pokemon);    
@@ -71,6 +87,11 @@ function getDetailOverlayTemplate(pokemon, index) {
             `;
 }
 
+/**
+ * Returns the HTML template for the AI popup.
+ * @param {string} text - The text to display in the popup.
+ * @returns {string} The HTML string for the AI popup.
+ */
 function getAIPopupTemplate(text) {
     return `
         <div class="ai_popup_border" onclick="childClickEvent()">
@@ -86,6 +107,9 @@ function getAIPopupTemplate(text) {
     `;
 }
 
+/**
+ * Updates the show more button based on whether there are more Pokémon to load.
+ */
 function getShowMoreBtnTemplate() {
     let hasMore = true;
     if (currentType !== null) {
