@@ -3,6 +3,9 @@ const LIMIT = 24;  // Batch size
 
 let allPokemonNames = [];  // Global for search suggestions (name/id only)
 
+/**
+ * Fetches the initial batch of all Pokémon and renders them.
+ */
 async function fetchAllPokemon() {
     try {
         showLoadingSpinner();
@@ -26,6 +29,10 @@ async function fetchAllPokemon() {
     }
 }
 
+/**
+ * Fetches the next batch of Pokémon, either from all or filtered by type.
+ * @returns {Promise<Array>} The batch of fetched Pokémon.
+ */
 async function fetchNextBatch() {
     try {
         let pokemonUrls;
@@ -55,6 +62,11 @@ async function fetchNextBatch() {
     }
 }
 
+/**
+ * Fetches detailed information for a single Pokémon from the given URL.
+ * @param {string} url - The URL to fetch Pokémon details from.
+ * @returns {Promise<Object|null>} The Pokémon details or null on error.
+ */
 async function fetchPokemonDetails(url) {
     try {
         const response = await fetch(url);
@@ -77,6 +89,11 @@ async function fetchPokemonDetails(url) {
     }
 }
 
+/**
+ * Fetches a single Pokémon by name or ID.
+ * @param {string|number} nameOrId - The name or ID of the Pokémon.
+ * @returns {Promise<Object|null>} The Pokémon details or null on error.
+ */
 async function fetchSinglePokemon(nameOrId) {
     try {
         const response = await fetch(`https://pokeapi.co/api/v2/pokemon/${nameOrId.toLowerCase()}`);
@@ -100,6 +117,9 @@ async function fetchSinglePokemon(nameOrId) {
     }
 }
 
+/**
+ * Loads all Pokémon names for search suggestions.
+ */
 async function loadAllPokemonNames() {
     try {
         const response = await fetch('https://pokeapi.co/api/v2/pokemon?limit=1350');
