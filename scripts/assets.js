@@ -1,12 +1,18 @@
+/**
+ * Displays a loading spinner in the content area.
+ */
 function showLoadingSpinner() {
     document.getElementById('content').innerHTML = getLoadingSpinnertemplate();
 }
 
+/**
+ * Loads more Pokémon cards, fetching the next batch if necessary.
+ */
 async function loadMorePokemon() {
     try {
         // Check against displayedPokemon length
         if (counter >= displayedPokemon.length) {
-            const nextBatch = await fetchNextBatch();  // NEW: Fetch from API
+            const nextBatch = await fetchNextBatch();  // Fetch from API
             if (nextBatch.length === 0) {
                 return;
             }
@@ -48,6 +54,9 @@ async function loadMorePokemon() {
     }
 }
 
+/**
+ * Toggles the visibility of the overlay and lazy loads images if shown.
+ */
 function toggleOverlay() {
     let overlayDiv = document.getElementById('overlay');
     overlayDiv.classList.toggle('d_none')
@@ -56,24 +65,37 @@ function toggleOverlay() {
     }
 }
 
+/**
+ * Toggles the visibility of the AI popup.
+ */
 function toggleAIPopup() {
     let aiPopupDiv = document.getElementById('ai_popup');
     aiPopupDiv.classList.toggle('d_none');
 }
 
+/**
+ * Displays the next Pokémon in the overlay.
+ * @param {number} index - The current index of the Pokémon.
+ */
 function showNextPokemon(index) {
     index = (index + 1) % pokemonData.length;
     document.getElementById('overlay').innerHTML = '';
     renderDetailsOverlay(index);
 }
 
+/**
+ * Displays the previous Pokémon in the overlay.
+ * @param {number} index - The current index of the Pokémon.
+ */
 function showPreviousPokemon(index) {
     index = (index - 1 + pokemonData.length) % pokemonData.length;
     document.getElementById('overlay').innerHTML = '';
     renderDetailsOverlay(index);
 }
 
-// prevent childelement onClick from bubbling up.
+/**
+ * Prevents the click event on a child element from bubbling up.
+ */
 function childClickEvent() {
     event.stopPropagation();
 }
