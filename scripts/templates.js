@@ -108,6 +108,30 @@ function getAIPopupTemplate(text) {
 }
 
 /**
+ * Returns the HTML template for the AI popup with a loading spinner.
+ * @returns {string} The HTML string for the loading AI popup.
+ */
+function getAILoadingTemplate() {
+    return `
+        <div class="ai_popup_border" onclick="childClickEvent()">
+            <div class="ai_popup_content">
+                <img class="ai_popup_img" src="./assets/img/poke_prof_by_grok.jpg" alt="AI_Icon" loading="lazy">
+                <div class="ai_popup_right">
+                    <button class="ai_close_btn" onclick="toggleAIPopup()">&times;</button>
+                    <h3>Pokémon Prof. Gemini</h3>
+                    <div class="spinner_container">
+                        <div class="loading_spinner">
+                            <img src="./assets/icons/pokemon-1536847_640.png" alt="Pokeball_icon" loading="lazy">
+                        </div>
+                        <img class="pika_gif" src="./assets/Running-Pikachu-GIF.gif" alt="" loading="lazy">
+                    </div>
+                </div>
+            </div>
+        </div>
+    `;
+}
+
+/**
  * Updates the show more button based on whether there are more Pokémon to load.
  */
 function getShowMoreBtnTemplate() {

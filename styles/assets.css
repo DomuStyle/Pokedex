@@ -282,6 +282,12 @@
     animation: metallicShift 7.50s ease infinite; /* Back-and-forth motion */
 }
 
+.overlay_btn_1:hover {
+    transform: scale(0.95);
+    border-style: inset;
+    cursor: pointer;
+}
+
 /* NEW: Styles for AI popup overlay */
 #ai_popup {
     position: fixed;
